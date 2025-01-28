@@ -80,6 +80,7 @@ const loadCafeMenu = async (language) => {
 };
 document.addEventListener('DOMContentLoaded', (content) => {
   if (window.location.toString().includes("cafe")) {
+    const cafeMenu = document.querySelector(".cafe-menu");
     const cafeMenuContainer = document.createElement('div');
     cafeMenuContainer.id = 'cafe-menu-container';
     document.body.appendChild(cafeMenuContainer);
@@ -92,7 +93,9 @@ document.addEventListener('DOMContentLoaded', (content) => {
         loadCafeMenu(newLanguage);
       },
     );
+
+    languageToggleBtn.style.float = "right";
   
-    document.body.prepend(languageToggleBtn);
+    cafeMenu.prepend(languageToggleBtn);
   } 
 });

@@ -17,7 +17,8 @@
   "scripts": {
     "start": "node server",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "scss-watch": "sass --watch styling/main.scss static/main.css"
+    "scss-watch": "sass --watch styling/main.scss static/main.css",
+    "dev": "start npm run scss-watch && nodemon server"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
