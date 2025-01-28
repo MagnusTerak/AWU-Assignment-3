@@ -5,6 +5,8 @@ import "./upcomingMovies.js";
 import './components/footer.js';
 import './carousel.js';
 import './movieRetriever.js';
+import "./cafe.js";
+import "./contact.js";
 
 
 import { fetchMovieData, moviesArray } from './movies.js';

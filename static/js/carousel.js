@@ -61,6 +61,8 @@ const populateCarousel = async () => {
 
 // Initialize the carousel when the page is loaded
 window.onload = function() {
-  populateCarousel();
+  if (window.location.pathname == "/") {
+    populateCarousel();
+  }
 }
 

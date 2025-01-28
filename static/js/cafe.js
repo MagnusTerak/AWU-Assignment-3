@@ -69,7 +69,7 @@ const loadMenuItems = async (menu, language) => {
   setupScrollAnimation('li');
 };
 const loadCafeMenu = async (language) => {
-  const data = await fetchData('/static/database/cafeMenu.json');
+  const data = await fetchData("/static/database/cafeMenu.json");
 
   if (data && data.menu) {
     loadMenuItems(data.menu, language);
@@ -78,19 +78,21 @@ const loadCafeMenu = async (language) => {
     return [];
   }
 };
-document.addEventListener('DOMContentLoaded', () => {
-  const cafeMenuContainer = document.createElement('div');
-  cafeMenuContainer.id = 'cafe-menu-container';
-  document.body.appendChild(cafeMenuContainer);
-
-  loadCafeMenu(currentLanguage);
-
-  const languageToggleBtn = createLanguageToggleBtn(
-    currentLanguage,
-    (newLanguage) => {
-      loadCafeMenu(newLanguage);
-    },
-  );
-
-  document.body.prepend(languageToggleBtn);
+document.addEventListener('DOMContentLoaded', (content) => {
+  if (window.location.toString().includes("cafe")) {
+    const cafeMenuContainer = document.createElement('div');
+    cafeMenuContainer.id = 'cafe-menu-container';
+    document.body.appendChild(cafeMenuContainer);
+  
+    loadCafeMenu(currentLanguage);
+  
+    const languageToggleBtn = createLanguageToggleBtn(
+      currentLanguage,
+      (newLanguage) => {
+        loadCafeMenu(newLanguage);
+      },
+    );
+  
+    document.body.prepend(languageToggleBtn);
+  } 
 });

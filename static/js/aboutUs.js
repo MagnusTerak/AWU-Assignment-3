@@ -89,7 +89,8 @@ const loadAboutUsItems = async (language) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM fully loaded and parsed');
-  loadAboutUsPage();
+  if (window.location.toString().includes("about")) {
+    loadAboutUsPage();
+  }
   // createFooter();
 });
