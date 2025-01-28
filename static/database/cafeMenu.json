@@ -1,0 +1,218 @@
+{
+  "menu": {
+    "snacks": [
+      {
+        "name": {
+          "en": "Popcorn",
+          "sv": "Popcorn"
+        },
+        "price": 50
+      },
+      {
+        "name": {
+          "en": "Nachos with Cheese",
+          "sv": "Nachos med Ost"
+        },
+        "price": 60
+      },
+      {
+        "name": {
+          "en": "Candy Mix",
+          "sv": "Godisblandning"
+        },
+        "price": 45
+      },
+      {
+        "name": {
+          "en": "Chocolate Bar",
+          "sv": "Chokladkaka"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Salted Peanuts",
+          "sv": "Saltade Jordnötter"
+        },
+        "price": 40
+      },
+      {
+        "name": {
+          "en": "Pretzels",
+          "sv": "Saltkringlor"
+        },
+        "price": 35
+      },
+      {
+        "name": {
+          "en": "Ice Cream",
+          "sv": "Glass"
+        },
+        "price": 50
+      },
+      {
+        "name": {
+          "en": "Potato Chips",
+          "sv": "Potatischips"
+        },
+        "price": 40
+      },
+      {
+        "name": {
+          "en": "Crackers",
+          "sv": "Kex"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Popcorn with Caramel",
+          "sv": "Popcorn med Karamell"
+        },
+        "price": 55
+      },
+      {
+        "name": {
+          "en": "Licorice",
+          "sv": "Lakrits"
+        },
+        "price": 45
+      },
+      {
+        "name": {
+          "en": "Gummy Bears",
+          "sv": "Gelébjörnar"
+        },
+        "price": 40
+      },
+      {
+        "name": {
+          "en": "Marshmallows",
+          "sv": "Marshmallows"
+        },
+        "price": 35
+      },
+      {
+        "name": {
+          "en": "Chocolate-Covered Nuts",
+          "sv": "Chokladdoppade Nötter"
+        },
+        "price": 50
+      },
+      {
+        "name": {
+          "en": "Fruit Snacks",
+          "sv": "Fruktsnacks"
+        },
+        "price": 45
+      }
+    ],
+    "beverages": [
+      {
+        "name": {
+          "en": "Cola",
+          "sv": "Cola"
+        },
+        "price": 35
+      },
+      {
+        "name": {
+          "en": "Orange Soda",
+          "sv": "Apelsinläsk"
+        },
+        "price": 35
+      },
+      {
+        "name": {
+          "en": "Bottled Water",
+          "sv": "Flaskvatten"
+        },
+        "price": 25
+      },
+      {
+        "name": {
+          "en": "Coffee",
+          "sv": "Kaffe"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Tea",
+          "sv": "Te"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Hot Chocolate",
+          "sv": "Varm Choklad"
+        },
+        "price": 40
+      },
+      {
+        "name": {
+          "en": "Sparkling Water",
+          "sv": "Bubbelvatten"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Smoothie",
+          "sv": "Smoothie"
+        },
+        "price": 50
+      },
+      {
+        "name": {
+          "en": "Energy Drink",
+          "sv": "Energidryck"
+        },
+        "price": 40
+      },
+      {
+        "name": {
+          "en": "Apple Juice",
+          "sv": "Äppeljuice"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Orange Juice",
+          "sv": "Apelsinjuice"
+        },
+        "price": 30
+      },
+      {
+        "name": {
+          "en": "Milkshake",
+          "sv": "Milkshake"
+        },
+        "price": 50
+      },
+      {
+        "name": {
+          "en": "Iced Tea",
+          "sv": "Is Te"
+        },
+        "price": 35
+      },
+      {
+        "name": {
+          "en": "Lemonade",
+          "sv": "Läskande Lemonad"
+        },
+        "price": 35
+      },
+      {
+        "name": {
+          "en": "Herbal Tea",
+          "sv": "Örtte"
+        },
+        "price": 30
+      }
+    ]
+  }
+}

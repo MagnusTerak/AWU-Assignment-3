@@ -1,0 +1,63 @@
+@use "./utils.scss" as *;
+
+footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 0 2rem;
+}
+
+.footer {
+  &__screen {
+    border-top: 2px solid rgba($color-text, 0.5);
+    padding-top: 2rem;
+  }
+
+  &__screen,
+  &__seats {
+    margin: 0 auto;
+  }
+
+  &__link__list {
+    margin: 1rem 0 0;
+  }
+
+  &__link-title {
+    @include font-poppins-semibold;
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+  }
+
+  &__link__item {
+    color: $color-text;
+    @include font-poppins;
+    font-size: 0.8rem;
+  }
+
+  &__link__item a {
+    color: $color-text;
+    @include font-poppins;
+    font-size: 0.8rem;
+  }
+
+  &__link__item a:hover {
+    color: $color-red;
+  }
+
+  &__seats img,
+  &__screen img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0 auto;
+
+    @include breakpoint(medium) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 992px;
+    }
+  } // Ends .footer
+}

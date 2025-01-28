@@ -1,0 +1,18 @@
+{
+  "pageTitle": "Kontakta oss",
+  "form": {
+    "name": "Namn",
+    "email": "Mejl",
+    "phoneNumber": "Telefon",
+    "topic": "Ämne",
+    "message": "Meddelande",
+    "submitButton": "Skicka",
+    "validation": {
+      "name": "Namn är obligatoriskt.",
+      "email": "En giltig e-postadress krävs.",
+      "phoneNumber": "Telefonnummer måste vara 10 siffror.",
+      "topic": "Ämne är obligatoriskt.",
+      "message": "Meddelande får inte vara tomt."
+    }
+  }
+}

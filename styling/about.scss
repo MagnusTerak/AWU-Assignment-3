@@ -1,0 +1,86 @@
+@use './utils.scss' as *;
+
+body {
+  color: $color-text;
+  background-color: $color-background;
+  font-family: font-poppins;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.about-us {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us__container {
+  display: flex;
+  flex-direction: column;
+  // margin-left: 1rem;
+}
+.about-us__section {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  margin: 0.8rem;
+  padding: 2rem;
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(/static/images//about-us-img/indoors-decor.jpg) 20% stretch;
+  //    border: inset 5px rgba($color: #f1ddc5, $alpha: 0.1);
+}
+.about-us__imgContainer {
+  width: 90vw;
+  width: 95%;
+  height: auto;
+  justify-self: center;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+  border-radius: 20px;
+  object-fit: contain;
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: inset 5px rgba($color: #f1ddc5, $alpha: 0.6);
+    // box-shadow: 0 0 0 10px $color-text;
+  }
+}
+.in-view {
+  animation: fade 1s 0.3s both;
+}
+.not-in-view {
+  opacity: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: translate(0, 3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@include breakpoint(large) {
+  .about-us__section {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .about-us__section__text-container {
+    width: 50vw;
+    min-width: 45vw;
+    padding: 1rem;
+    align-content: center;
+  }
+  .about-us__section__origin {
+    flex-direction: row-reverse;
+  }
+  .about-us__imgContainer {
+    margin: 1rem;
+  }
+}

@@ -1,0 +1,96 @@
+@use './utils.scss' as *;
+@use 'header.scss';
+@use 'nav.scss';
+@use 'carousel.scss';
+@use 'ongoingMovies.scss';
+@use 'upcomingMovies.scss';
+@use 'footer.scss';
+@use 'about.scss';
+@use 'cafe.scss';
+@use 'languageToggleBtn.scss';
+@use 'contact.scss';
+@use 'movies.scss';
+
+body{
+background-color: $color-background;
+font-size: 16px;
+
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.gift-section {
+  @include font-poppins;
+  background-color: $color-text; // As described in FIGMA
+  color: #000;
+  padding: 1rem 1rem 5rem 1rem;
+
+  max-width: 1366px;
+
+  &__header {
+    @include font-poppins-semibold;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  &__gift-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  &__gift-button {
+    @include font-poppins-semibold;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 0;
+    float: right;
+    font-size: 1rem;
+    box-shadow: 1.7px 1.7px 0 0.5px #000;
+
+    height: 4rem;
+    width: 8rem;
+
+    &:active {
+      background-color: $color-red;
+    }
+  }
+
+  @media only screen and (min-width: 850px) {
+    margin: 0 auto;
+
+    &__img-container {
+      display: flex;
+    }
+
+    &__header {
+      font-size: 4rem;
+    }
+
+    &__gift-image {
+      margin-left: auto;
+    }
+
+    &__gift-text {
+      font-size: 2rem;
+
+      margin-left: 1rem;
+      margin-right: auto;
+      width: 500px;
+    }
+
+    &__gift-button {
+      font-size: 2rem;
+
+      width: 20rem;
+      &:hover {
+        background-color: $color-red;
+      }
+    }
+  }
+}

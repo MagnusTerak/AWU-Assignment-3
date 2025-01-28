@@ -1,0 +1,940 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Yesteryear&display=swap");
+body {
+  background-color: #1a323c;
+  font-size: 16px;
+}
+body li {
+  list-style: none;
+}
+body a {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+}
+
+.header__container {
+  min-height: 10rem;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .header__container {
+    height: 30rem;
+  }
+}
+.header__container .city__name {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header__container .city__name {
+    display: block;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: poppins;
+    letter-spacing: 1rem;
+    color: #f1ddc5;
+    font-size: 2rem;
+  }
+}
+.header__container .nav__button {
+  width: 2.5rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.6rem;
+  z-index: 999;
+}
+@media (min-width: 1024px) {
+  .header__container .nav__button {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stripe__container {
+    position: relative;
+    top: 6rem;
+  }
+  .stripe__container__beige {
+    height: 2rem;
+    background-color: #f1ddc5;
+  }
+  .stripe__container__orange {
+    height: 2rem;
+    background-color: #f2753b;
+  }
+  .stripe__container__red {
+    height: 2rem;
+    background-color: #c43c3a;
+  }
+  .stripe__container__cyan {
+    height: 2rem;
+    background-color: #70a2aa;
+  }
+}
+
+.header__image {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header__image {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.header__logo__container {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .header__logo__container {
+    position: absolute;
+    top: 0.2rem;
+    left: 2rem;
+  }
+}
+.header__logo__container .header__logo {
+  font-family: yesteryear;
+  font-size: 5rem;
+  color: #f2753b;
+  font-weight: lighter;
+  margin: 1rem;
+}
+@media (min-width: 1024px) {
+  .header__logo__container .header__logo {
+    font-size: 7rem;
+    margin: 0;
+  }
+}
+.header__logo__container .header__logo__text {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header__logo__container .header__logo__text {
+    display: block;
+    margin: 0;
+    font-family: poppins;
+    color: #f1ddc5;
+    position: absolute;
+    top: 8rem;
+    left: 1rem;
+    font-weight: lighter;
+    font-size: 1.3rem;
+  }
+}
+
+nav {
+  display: none;
+}
+@media (min-width: 1024px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 23rem;
+  }
+}
+nav ul {
+  padding: 0;
+}
+@media (min-width: 1024px) {
+  nav ul {
+    display: flex;
+    font-family: poppins;
+    text-transform: uppercase;
+  }
+}
+nav ul li {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+@media (min-width: 1024px) {
+  nav ul li {
+    margin-right: 5rem;
+  }
+}
+nav ul li a {
+  padding: 1rem;
+  color: #f1ddc5;
+}
+
+.navbar__visible {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  top: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  text-transform: uppercase;
+  background-color: #1a323c;
+  z-index: 998;
+}
+.navbar__visible ul {
+  font-family: poppins;
+}
+.navbar__visible ul li {
+  margin-bottom: 3rem;
+}
+
+/* General Styles */
+/* New Section Styles */
+section.newest {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+/*Carousel Style*/
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Increased max-width for better design scaling */
+  overflow: hidden;
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for a more modern look */
+}
+
+/* Slide Container */
+.slides {
+  display: flex;
+  transition: transform 0.6s ease-in-out; /* Smoother transition */
+}
+
+/* Individual Slide */
+.slide {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; /* Slightly increased height for a more balanced layout */
+}
+
+/* Image Styling */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; /* Rounded corners on images */
+}
+
+/* Movie Info Box */
+.movie-info {
+  position: absolute;
+  bottom: 320px; /* Adjusted for better positioning */
+  left: 20px;
+  color: white;
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+/* Title Styling */
+.movie-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Description Styling */
+.movie-info p {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Navigation Buttons */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%; /* Make buttons round */
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+/* Hover Effect for Buttons */
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .movie-info {
+    font-size: 14px;
+    bottom: 10px;
+    left: 10px;
+    max-width: 90%;
+  }
+  .carousel-button {
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+.ongoingMoviesSection__header {
+  text-align: center;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #f1ddc5;
+}
+
+.ongoingMovies {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  overflow: hidden;
+  padding: 0 2.5rem 0 2.5rem;
+}
+.ongoingMovies__card {
+  width: calc(50% - 2rem);
+  height: 90%;
+  padding: 1rem;
+  flex: 0 0 calc(50% - 2rem);
+  margin-bottom: 2rem;
+}
+.ongoingMovies__card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.ongoingMovies__card__label {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.1rem;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f1ddc5;
+}
+@media (min-width: 1024px) {
+  .ongoingMovies__card {
+    width: calc(16.6666666667% - 2rem);
+    flex: 0 0 calc(16.6666666667% - 2rem);
+  }
+}
+.ongoingMovies__filterDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 1024px) {
+  .ongoingMovies__filterDiv__selectDiv {
+    display: none;
+  }
+}
+.ongoingMovies__filterDiv__selectDiv {
+  position: relative;
+  width: 93.5%;
+  border: 2px solid #f1ddc5;
+}
+.ongoingMovies__filterDiv__selectDiv::after {
+  content: "\f078";
+  font: normal normal normal 17px/1 FontAwesome;
+  color: #f1ddc5;
+  right: 12px;
+  height: 34px;
+  padding: 15px 0px 0px 8px;
+  position: absolute;
+  pointer-events: none;
+}
+.ongoingMovies__filterDiv__selectDiv__select {
+  width: 93.5%;
+  height: 3rem;
+  background-color: transparent;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #f1ddc5;
+  font-size: 1.5rem;
+  padding-left: 0.2rem;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.ongoingMovies__filterDiv__selectDiv__select:hover {
+  cursor: pointer;
+}
+.ongoingMovies__filterDiv__selectDiv__select__option {
+  background-color: #1a323c;
+}
+.ongoingMovies__filterDiv__searchfield {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  outline: none;
+  border: 2px solid #f1ddc5;
+  background-color: transparent;
+  height: 2.5rem;
+  color: #f1ddc5;
+  padding-left: 0.5rem;
+  margin-left: 1rem;
+}
+.ongoingMovies__filterDiv__searchfield:active {
+  outline: none;
+  color: white;
+}
+.ongoingMovies__filterDiv__searchfield::placeholder {
+  color: #bdbecb;
+}
+.ongoingMovies__filterDiv__searchfield:active {
+  transform: scale(0.95);
+}
+.ongoingMovies__filterDiv__genreChipDiv {
+  display: none;
+  width: 65%;
+}
+.ongoingMovies__filterDiv__genreChipDiv__chip {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  border: 2px solid #f1ddc5;
+  background-color: transparent;
+  color: #f1ddc5;
+  height: 2.9rem;
+  width: auto;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.ongoingMovies__filterDiv__genreChipDiv__chip:hover {
+  background-color: #f1ddc5;
+  color: #1a323c;
+  cursor: pointer;
+}
+.ongoingMovies__filterDiv__genreChipDiv__searchfield {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+  outline: none;
+  border: 2px solid #f1ddc5;
+  background-color: transparent;
+  height: 2.5rem;
+  color: #f1ddc5;
+  padding-left: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+.ongoingMovies__filterDiv__genreChipDiv__searchfield:active {
+  outline: none;
+  color: white;
+}
+.ongoingMovies__filterDiv__genreChipDiv__searchfield::placeholder {
+  color: #f1ddc5;
+}
+.ongoingMovies__filterDiv__genreChipDiv__searchfield:active {
+  transform: scale(0.95);
+}
+@media (min-width: 1024px) {
+  .ongoingMovies__filterDiv__genreChipDiv {
+    display: block;
+  }
+}
+
+.upcomingMoviesSection__header {
+  text-align: center;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #f1ddc5;
+}
+
+.upcomingMovies {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  height: auto;
+  overflow: hidden;
+}
+.upcomingMovies__card {
+  width: calc(50% - 2rem);
+  height: auto;
+  padding: 1rem;
+  flex: 0 0 calc(50% - 2rem);
+  margin-bottom: 2rem;
+}
+.upcomingMovies__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.upcomingMovies__card-label {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.3rem;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f1ddc5;
+}
+
+footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 0 2rem;
+}
+
+.footer__screen {
+  border-top: 2px solid rgba(241, 221, 197, 0.5);
+  padding-top: 2rem;
+}
+.footer__screen, .footer__seats {
+  margin: 0 auto;
+}
+.footer__link__list {
+  margin: 1rem 0 0;
+}
+.footer__link-title {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.1rem;
+  margin: 0.3rem 0;
+}
+.footer__link__item {
+  color: #f1ddc5;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.8rem;
+}
+.footer__link__item a {
+  color: #f1ddc5;
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.8rem;
+}
+.footer__link__item a:hover {
+  color: #c43c3a;
+}
+.footer__seats img, .footer__screen img {
+  max-width: 100%;
+  height: auto;
+}
+.footer__links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .footer__links {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 992px;
+  }
+}
+
+body {
+  color: #f1ddc5;
+  background-color: #1a323c;
+  font-family: font-poppins;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.about-us {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us__section {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  margin: 0.8rem;
+  padding: 2rem;
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: url(/static/images//about-us-img/indoors-decor.jpg) 20% stretch;
+}
+
+.about-us__imgContainer {
+  width: 90vw;
+  width: 95%;
+  height: auto;
+  justify-self: center;
+  margin-top: 2.5rem;
+  margin-bottom: 3rem;
+  border-radius: 20px;
+  object-fit: contain;
+}
+.about-us__imgContainer__image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: inset 5px rgba(241, 221, 197, 0.6);
+}
+
+.in-view {
+  animation: fade 1s 0.3s both;
+}
+
+.not-in-view {
+  opacity: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: translate(0, 3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@media (min-width: 1024px) {
+  .about-us__section {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  .about-us__section__text-container {
+    width: 50vw;
+    min-width: 45vw;
+    padding: 1rem;
+    align-content: center;
+  }
+  .about-us__section__origin {
+    flex-direction: row-reverse;
+  }
+  .about-us__imgContainer {
+    margin: 1rem;
+  }
+}
+body {
+  background-color: #1a323c;
+  color: #f1ddc5;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+body .cafe-menu {
+  margin: 1rem;
+  border: 4px solid transparent;
+  border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20% stretch;
+}
+body .cafe-menu__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+body .cafe-menu__container .menu-section {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+body .cafe-menu__container .menu-section .menu-section__title {
+  font-size: 2.5rem;
+}
+body .cafe-menu__container .menu-section .cafe-menu__List {
+  list-style: none;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border: solid 5px red;
+  width: 100%;
+}
+body .cafe-menu__container .menu-section .cafe-menu__item {
+  margin-right: 1.5rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 4px solid transparent;
+  border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20% stretch;
+}
+body .cafe-menu__container .menu-section span {
+  margin-right: 0.5rem;
+}
+
+#language-toggle-btn {
+  align-self: end;
+  width: 13rem;
+  margin: 1rem;
+  padding: 0.5rem;
+  font-family: font-poppins-semibold;
+  font-size: 1.5rem;
+  color: #f1ddc5;
+  background-color: #70a2aa;
+  border: solid 5px #70a2aa;
+  border-radius: 10px;
+}
+#language-toggle-btn:hover {
+  background-color: #c43c3a;
+  border-color: rgba(241, 221, 197, 0.6);
+}
+
+.header {
+  font-family: "Yesteryear", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f1ddc5;
+}
+
+.contact-page__title {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #f1ddc5;
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.contact-form {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #1a323c;
+  color: #f1ddc5;
+  padding: 30px;
+  box-shadow: 0 6px 10px #f2753b;
+  border-radius: 12px;
+}
+@media (min-width: 1024px) {
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  height: 40px;
+}
+.contact-form .contact-form__label--name,
+.contact-form .contact-form__label--email,
+.contact-form .contact-form__label--phoneNumber,
+.contact-form .contact-form__label--topic,
+.contact-form .contact-form__label--message {
+  display: block;
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 3px;
+  margin-top: 20px;
+}
+.contact-form .contact-form__input,
+.contact-form .contact-form__textarea {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  padding: 12px 15px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.contact-form input.invalid,
+.contact-form textarea.invalid {
+  border: 2px solid #c43c3a;
+}
+.contact-form .error-message {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #c43c3a;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: none;
+}
+.contact-form .error-message.visible {
+  display: block;
+}
+.contact-form .contact-form__button {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: block;
+  margin-top: 10px;
+  background-color: #f2753b;
+  color: #f1ddc5;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.contact-form .contact-form__button:hover {
+  background-color: #c43c3a;
+}
+
+.movies--header {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.movies {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 2.5rem 0 2.5rem;
+}
+.movies__card {
+  width: 25%;
+  padding: 1.5rem;
+}
+.movies__card__image {
+  width: 100%;
+  height: 80%;
+}
+.movies__card__title {
+  text-align: center;
+  color: #f1ddc5;
+}
+
+.singleMovieReturn {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f1ddc5;
+  background-color: #1a323c;
+  border: 1.5px solid #f1ddc5;
+  border-radius: 2px;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  display: flex;
+  margin: auto;
+  width: 10%;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.singleMovie {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f1ddc5;
+  width: 60%;
+  height: 40%;
+  margin: auto;
+}
+.singleMovie__img {
+  height: 50%;
+  width: 30%;
+  margin: auto;
+  display: block;
+}
+.singleMovie__title {
+  text-align: center;
+}
+
+body {
+  background-color: #1a323c;
+  font-size: 16px;
+}
+body li {
+  list-style: none;
+}
+body a {
+  text-decoration: none;
+}
+
+.gift-section {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f1ddc5;
+  color: #000;
+  padding: 1rem 1rem 5rem 1rem;
+  max-width: 1366px;
+}
+.gift-section__header {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 3rem;
+  text-align: center;
+}
+.gift-section__gift-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+}
+.gift-section__gift-button {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  background-color: transparent;
+  border: 2px solid #000;
+  border-radius: 0;
+  float: right;
+  font-size: 1rem;
+  box-shadow: 1.7px 1.7px 0 0.5px #000;
+  height: 4rem;
+  width: 8rem;
+}
+.gift-section__gift-button:active {
+  background-color: #c43c3a;
+}
+@media only screen and (min-width: 850px) {
+  .gift-section {
+    margin: 0 auto;
+  }
+  .gift-section__img-container {
+    display: flex;
+  }
+  .gift-section__header {
+    font-size: 4rem;
+  }
+  .gift-section__gift-image {
+    margin-left: auto;
+  }
+  .gift-section__gift-text {
+    font-size: 2rem;
+    margin-left: 1rem;
+    margin-right: auto;
+    width: 500px;
+  }
+  .gift-section__gift-button {
+    font-size: 2rem;
+    width: 20rem;
+  }
+  .gift-section__gift-button:hover {
+    background-color: #c43c3a;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,117 @@
+@use "./utils.scss" as *;
+
+header {
+  display: flex;
+}
+
+.header__container {
+  min-height: 10rem;
+  width: 100%;
+  @include breakpoint(large) {
+    height: 30rem;
+  }
+
+  .city__name {
+    display: none;
+
+    @include breakpoint(large) {
+      display: block;
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: poppins;
+      letter-spacing: 1rem;
+      color: $color-text;
+      font-size: 2rem;
+    }
+  }
+  .nav__button {
+    width: 2.5rem;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.6rem;
+    z-index: 999;
+    @include breakpoint(large) {
+      display: none;
+    }
+  }
+}
+
+.stripe__container {
+  @include breakpoint(large) {
+    position: relative;
+    top: 6rem;
+
+    &__beige {
+      height: 2rem;
+      background-color: $color-text;
+    }
+
+    &__orange {
+      height: 2rem;
+      background-color: $color-orange;
+    }
+
+    &__red {
+      height: 2rem;
+      background-color: $color-red;
+    }
+
+    &__cyan {
+      height: 2rem;
+      background-color: $color-cyan;
+    }
+  }
+}
+
+.header__image {
+  display: none;
+
+  @include breakpoint(large) {
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.header__logo__container {
+  display: flex;
+  justify-content: center;
+
+  @include breakpoint(large) {
+    position: absolute;
+    top: 0.2rem;
+    left: 2rem;
+  }
+
+  .header__logo {
+    font-family: yesteryear;
+    font-size: 5rem;
+    color: $color-orange;
+    font-weight: lighter;
+    margin: 1rem;
+    @include breakpoint(large) {
+      font-size: 7rem;
+      margin: 0;
+    }
+  }
+
+  .header__logo__text {
+    display: none;
+
+    @include breakpoint(large) {
+      display: block;
+      margin: 0;
+      font-family: poppins;
+      color: $color-text;
+      position: absolute;
+      top: 8rem;
+      left: 1rem;
+      font-weight: lighter;
+      font-size: 1.3rem;
+    }
+  }
+}

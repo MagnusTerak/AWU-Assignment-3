@@ -1,0 +1,56 @@
+@use './utils.scss' as *;
+
+body {
+  background-color: $color-background;
+  color: $color-text;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  .cafe-menu {
+    margin: 1rem;
+    border: 4px solid transparent;
+    border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20% stretch;
+  }
+  .cafe-menu__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+    .menu-section {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+
+      .menu-section__title {
+        font-size: 2.5rem;
+      }
+
+      .cafe-menu__List {
+        list-style: none;
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        border: solid 5px red;
+        width: 100%;
+      }
+      .cafe-menu__item {
+        margin-right: 1.5rem;
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 4px solid transparent;
+        border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20%
+          stretch;
+      }
+      span {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+

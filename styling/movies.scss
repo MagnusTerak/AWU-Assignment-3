@@ -1,0 +1,61 @@
+@use './utils.scss' as *;
+
+.movies--header {
+    @include font-poppins;
+    text-align: center;
+}
+
+.movies {
+    @include font-poppins;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 2.5rem 0 2.5rem;
+
+    &__card {
+        width: 25%;
+        padding: 1.5rem;
+        &__image {
+            width: 100%;
+            height: 80%;
+        }
+
+        &__title {
+            text-align: center;
+            color: $color-text;
+        }
+    }
+}
+
+.singleMovieReturn {
+    @include font-poppins;
+    color: $color-text;
+    background-color: $color-background;
+    border: 1.5px solid $color-text;
+    border-radius: 2px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    display: flex;
+    margin: auto;
+    width: 10%;
+    margin-bottom: 2rem;
+    text-align: center;
+    
+}
+
+.singleMovie {
+    @include font-poppins;
+    color: $color-text;
+    width: 60%;
+    height: 40%;
+    margin: auto;
+
+    &__img {
+        height: 50%;
+        width: 30%;
+        margin: auto;
+        display: block;
+    }
+
+    &__title {
+        text-align: center;
+    }
+}

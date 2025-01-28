@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Yesteryear&display=swap");
+
+$color-red: #c43c3a; // Same for hover
+$color-cyan: #70a2aa;
+$color-orange: #f2753b;
+$color-text: #f1ddc5;
+$color-background: #1a323c;
+
+// Breakpoints
+$breakpoint-small: 640px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+$breakpoint-xlarge: 1280px;
+
+// Mixin för breakpoints
+@mixin breakpoint($point) {
+  @if $point == small {
+    @media (min-width: $breakpoint-small) {
+      @content;
+    }
+    
+  } @else if $point == medium {
+    @media (min-width: $breakpoint-medium) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (min-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $point == xlarge {
+    @media (min-width: $breakpoint-xlarge) {
+      @content;
+    }
+  } @else {
+    @error "Breakpoint #{$point} är inte definierat!";
+  }
+}
+
+// Exempel på hur man kan använda Breakpoint ifrån en mixin.
+// .div_example {
+
+//     @include breakpoint(large) {
+//         width: 100px;
+//     }
+// }
+
+// Font mixins
+@mixin font-yester() {
+  font-family: "Yesteryear", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-poppins() {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-poppins-semibold() {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  background-color: $color-background;
+  font-size: 16px;
+
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+}
