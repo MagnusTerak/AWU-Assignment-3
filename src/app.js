@@ -1,6 +1,8 @@
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
+import getAverageRating from "./getAverageRating.js";
+import cmsAdapter from "./cmsAdapter.js";
 
 const app = express();
 
@@ -31,6 +33,7 @@ app.get("/movies", async (req, res) => {
 });
 
 import MarkdownIt from "markdown-it";
+
 const md = MarkdownIt();
 
 app.get("/movie/:id", async (req, res) => {
@@ -45,6 +48,14 @@ app.get("/movie/:id", async (req, res) => {
   res.render("movie", {
     movie: loadedMovie.data,
     markedIntroText: introTextHTML,
+  });
+});
+
+app.get("/movies/:id/average-rating", async (req, res) => {
+  const { id } = req.params;
+  const rating = await getAverageRating(cmsAdapter, id);
+  res.status(200).json({
+    data: rating,
   });
 });
 
