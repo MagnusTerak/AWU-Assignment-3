@@ -860,6 +860,25 @@ body .cafe-menu__container .menu-section span {
   text-align: center;
 }
 
+/* //////////////////// REVIEW MODAL //////////////////*/
+.modal {
+  background-color: #fff;
+  padding: 0 1.8rem 1.8rem;
+  border-radius: 5px;
+  width: 25rem;
+}
+
+.close-modal-button {
+  font-size: 3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
 body {
   background-color: #1a323c;
   font-size: 16px;

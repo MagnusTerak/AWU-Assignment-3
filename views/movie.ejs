@@ -1,6 +1,42 @@
 <a href="/movies" class="singleMovieReturn">Återgå till vårat utbud</a>
 <div class="singleMovie">
-    <img class="singleMovie__img" src="<%= movie.attributes.image.url %>">
-    <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
-    <%- markedIntroText %>
+  <img class="singleMovie__img" src="<%= movie.attributes.image.url %>" />
+  <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
+  <%- markedIntroText %>
 </div>
+
+
+<button class="open-button">Show the dialog</button>
+
+<!-- Modal-dialog -->
+<dialog class="modal" id="modal">
+    <span class="close-modal-button">&times;</span>
+    <h2 class="" id="header">Skriv en egen recension</h2>
+      <div class="send-review">
+        <form id="review-form" data-movie-id="<%= movie.id %>">
+
+            <label for="author">Namn:</label>
+            <input type="text" id="author" name="author" required />
+
+            <label for="comment">Kommentar:</label>
+            <textarea id="comment" name="comment" required></textarea>
+
+            <label for="rating">Betyg:</label>
+            <select id="rating" name="rating" required>
+            <option value="">Ditt betyg på filmen</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select>
+
+            <button type="submit">Skicka</button>
+        </form>
+
+        <p id="response-message"></p>
+
+        <script src="/static/js/reviews.js"></script>
+        </div>
+</dialog>
+  <!-- End Modal-dialog -->
