@@ -1,6 +1,6 @@
 import {expect, test} from '@jest/globals';
 import request from 'supertest';
-import { app } from "../static/js/app.js";
+import { app } from "../src/app.js";
 
 
 test('/Movies page should list all titles of the movies correct.', async () => {
