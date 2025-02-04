@@ -156,7 +156,7 @@ nav ul li {
 }
 @media (min-width: 1024px) {
   nav ul li {
-    margin-right: 5rem;
+    margin-right: 2rem;
   }
 }
 nav ul li a {
