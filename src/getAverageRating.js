@@ -1,3 +1,4 @@
+// This function has a testfile in the test-folder and is called getAverageRating.test.js.
 export default async function getAverageRating(apiRatingAdapter, id) {
   const ratings = await apiRatingAdapter.retrieveAllReviews(id);
 
@@ -8,8 +9,7 @@ export default async function getAverageRating(apiRatingAdapter, id) {
     const rating = review.attributes.rating;
     sumRatings += rating;
     if (rating !== null) countRatings++;
-    // if (rating) countRatings++;
-    // If the minimum rating is 1 star.
+    // 'if (rating) countRatings++;' instead, if the minimum rating should be 1 star.
   });
 
   const averageRating = sumRatings / countRatings;
@@ -19,7 +19,7 @@ export default async function getAverageRating(apiRatingAdapter, id) {
   } else if (countRatings !== 0) {
     const imdbId = await apiRatingAdapter.retrieveImdbId(id);
     const imdbRating = await apiRatingAdapter.retrieveImdbRating(imdbId);
-    return imdbRating;
+    return imdbRating / 2;
   } else {
     return [];
   }
