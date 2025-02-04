@@ -1,6 +1,7 @@
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
+import  getScreenings  from "./screenings.js";
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.get("/movies", async (req, res) => {
 });
 
 import MarkdownIt from "markdown-it";
+import cmsAdapter from "./cmsAdapter.js";
 const md = MarkdownIt();
 
 app.get("/movie/:id", async (req, res) => {
@@ -48,8 +50,18 @@ app.get("/movie/:id", async (req, res) => {
   });
 });
 
+app.get("/movies/screenings", async (req, res) => {
+  const screenings = await getScreenings(cmsAdapter);
+  res.status(200).json({
+    data: screenings,
+  });
+
+});
+
 app.use((req, res, next) => {
   res.status(404).send("Sidan du letar efter existerar inte.");
 });
+
+
 
 export { app };
