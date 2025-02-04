@@ -13,5 +13,9 @@ export default async function getAverageRating(cmsAdapter, id) {
 
   const averageRating = sumRatings / countRatings;
 
-  return averageRating;
+  if (averageRating) {
+    return averageRating;
+  } else {
+    return [];
+  }
 }
