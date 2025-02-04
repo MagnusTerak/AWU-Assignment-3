@@ -1,5 +1,6 @@
 export default async function getAverageRating(apiRatingAdapter, id) {
-  const ratings = await apiRatingAdapter.retrieveAllRatings(id);
+  const ratings = await apiRatingAdapter.retrieveAllReviews(id);
+
   let sumRatings = 0;
   let countRatings = 0;
 
@@ -13,8 +14,12 @@ export default async function getAverageRating(apiRatingAdapter, id) {
 
   const averageRating = sumRatings / countRatings;
 
-  if (averageRating) {
+  if (countRatings >= 5) {
     return averageRating;
+  } else if (countRatings !== 0) {
+    const imdbId = await apiRatingAdapter.retrieveImdbId(id);
+    const imdbRating = await apiRatingAdapter.retrieveImdbRating(imdbId);
+    return imdbRating;
   } else {
     return [];
   }
