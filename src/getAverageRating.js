@@ -12,10 +12,10 @@ export default async function getAverageRating(apiRatingAdapter, id) {
     // 'if (rating) countRatings++;' instead, if the minimum rating should be 1 star.
   });
 
-  const averageRating = sumRatings / countRatings;
+  const averageRating = (sumRatings / countRatings).toFixed(1);
 
   if (countRatings >= 5) {
-    return averageRating;
+    return parseFloat(averageRating);
   } else if (countRatings !== 0) {
     const imdbId = await apiRatingAdapter.retrieveImdbId(id);
     const imdbRating = await apiRatingAdapter.retrieveImdbRating(imdbId);

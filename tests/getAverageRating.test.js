@@ -21,6 +21,8 @@ describe("getAverageRating()", () => {
       mockReview({ rating: 1 }),
       mockReview({ rating: 2 }),
     ];
+    // Rounds the average rating to the nearest, tenths decimal place. Though it is converted into a string value.
+    const testAverage = ((2 + 5 + 3 + 1 + 2) / 5).toFixed(1);
 
     const apiRatingAdapter = {
       retrieveAllReviews: async () => testArray,
@@ -28,7 +30,7 @@ describe("getAverageRating()", () => {
 
     const averageRating = await getAverageRating(apiRatingAdapter, movieId);
     expect(testArray.length).toBeGreaterThanOrEqual(5);
-    expect(averageRating).toBe((2 + 5 + 3 + 1 + 2) / 5);
+    expect(averageRating).toBe(parseFloat(testAverage));
   });
 
   it("returns average rating from IMDB, if (5 > reviews)", async () => {
