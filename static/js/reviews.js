@@ -1,5 +1,5 @@
-const openModal = document.querySelector(".open-button");
-const closeModal = document.querySelector(".close-modal-button");
+const openModal = document.querySelector(".review-modal__open");
+const closeModal = document.querySelector(".review-modal__close");
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("review-form");
   const responseMessage = document.getElementById("response-message");
@@ -7,16 +7,24 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     const comment = document.getElementById("comment").value;
-    const rating = document.getElementById("rating").value;
     const author = document.getElementById("author").value;
     const movie = form.getAttribute("data-movie-id");
 
-    const reviewData = {
-      comment: comment,
-      rating: parseInt(rating),
-      author: author,
-      movie: movie,
-    };
+    const ratingInput = document.querySelector('input[name="rating"]:checked');
+
+   if (!ratingInput) {
+       responseMessage.textContent = "Välj ett betyg mellan 0 och 5 genom att klicka på stjärnorna!";
+       responseMessage.style.color = "red";
+       return;
+   }
+
+   const rating = parseInt(ratingInput.value);
+
+   if (isNaN(rating) || rating < 0 || rating > 5) {
+     responseMessage.textContent = "Betyg måste vara mellan 0 och 5!";
+     responseMessage.style.color = "red";
+     return;
+   }
 
     try {
       const response = await fetch("/api/reviews", {
@@ -24,10 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(reviewData),
+        body: JSON.stringify({
+            comment: comment,
+            rating: rating,
+            author: author,
+            movie: movie,
+          })
       });
-
-      console.log("ReviewData:", reviewData);
 
       if (!response.ok) {
         throw new Error("Något gick fel vid skickandet av recensionen.");
@@ -49,6 +60,5 @@ openModal.addEventListener("click", () => {
 });
 
 closeModal.addEventListener("click", () => {
-  location.reload();
   modal.close();
 });

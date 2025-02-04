@@ -52,30 +52,34 @@ app.get("/movie/:id", async (req, res) => {
 ///////////////////// POST REVIEW //////////////////////////////
 
 app.post("/api/reviews", async (req, res) => {
-
   const { comment, rating, author, movie } = req.body;
 
-  if (!comment || !rating || !author) {
+  if (!comment || !rating || !author || !movie) {
     return res.status(400).json({ error: "Alla fält måste vara ifyllda" });
   }
 
-  try {
-    const bodyToSend = JSON.stringify({
-      data: {
-        comment: comment,
-        rating: rating,
-        author: author,
-        movie: movie
-      }
-    });
+  if (isNaN(rating) || rating < 0 || rating > 5) {
+    return res.status(400).json({ error: "Betyg måste vara mellan 0 och 5." });
+  }
 
-    const response = await fetch("https://plankton-app-xhkom.ondigitalocean.app/api/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: bodyToSend,
-    });
+  try {
+    const response = await fetch(
+      "https://plankton-app-xhkom.ondigitalocean.app/api/reviews",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: {
+            comment: comment,
+            rating: rating,
+            author: author,
+            movie: movie,
+          }
+        })
+      }
+    );
 
     const responseText = await response.text();
     console.log("🔹 API-status:", response.status);
@@ -88,8 +92,8 @@ app.post("/api/reviews", async (req, res) => {
     const responseData = JSON.parse(responseText);
     res.json({ message: "Recensionen har skickats!", data: responseData });
   } catch (error) {
-    console.log("❌ API-fel:", error.message);
-    console.log("❌ Fullständigt fel:", error);  // Logga hela felet
+    // console.log("❌ API-fel:", error.message);
+    // console.log("❌ Fullständigt fel:", error); // Logga hela felet
     res.status(500).json({ error: error.message });
   }
 });

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Yesteryear&display=swap");
 body {
   background-color: #1a323c;
@@ -861,22 +862,94 @@ body .cafe-menu__container .menu-section span {
 }
 
 /* //////////////////// REVIEW MODAL //////////////////*/
-.modal {
+/* === Modal (Block) === */
+.review-modal {
   background-color: #fff;
   padding: 0 1.8rem 1.8rem;
   border-radius: 5px;
   width: 25rem;
 }
 
-.close-modal-button {
+.review-modal__close {
   font-size: 3rem;
   cursor: pointer;
   display: flex;
   justify-content: flex-end;
 }
 
-.modal::backdrop {
+.review-modal::backdrop {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.review-modal__title {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.review-modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Form (Block) === */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  color: #333333;
+  width: 90%;
+}
+
+.review-form__label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.review-form__input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.review-form__submit {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f2753b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.review-form__submit:hover {
+  background-color: #f49366;
+}
+
+/* === Stjärnbetyg (Block) === */
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+
+.rating__input {
+  display: none;
+}
+
+.rating__star {
+  font-size: 2rem;
+  color: gray;
+  cursor: pointer;
+}
+
+.rating__star:hover,
+.rating__star:hover ~ .rating__star,
+.rating__input:checked ~ .rating__star {
+  color: gold;
 }
 
 body {
