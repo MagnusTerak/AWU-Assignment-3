@@ -4,11 +4,11 @@ import getAverageRating from "../src/getAverageRating.js";
 describe("getAverageRating()", () => {
   const movieId = 1;
   it("returns an empty array", async () => {
-    const cmsAdapter = {
+    const apiRatingAdapter = {
       retrieveAllRatings: async () => [],
     };
 
-    const rating = await getAverageRating(cmsAdapter, movieId);
+    const rating = await getAverageRating(apiRatingAdapter, movieId);
     expect(rating).toHaveLength(0);
   });
 
@@ -21,11 +21,11 @@ describe("getAverageRating()", () => {
       mockReview({ rating: 2 }),
     ];
 
-    const cmsAdapter = {
+    const apiRatingAdapter = {
       retrieveAllRatings: async () => testArray,
     };
 
-    const rating = await getAverageRating(cmsAdapter, movieId);
+    const rating = await getAverageRating(apiRatingAdapter, movieId);
     expect(testArray.length).toBeGreaterThanOrEqual(5);
     expect(rating).toBe((2 + 5 + 3 + 1 + 2) / 5);
   });

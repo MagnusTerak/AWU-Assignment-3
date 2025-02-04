@@ -1,4 +1,4 @@
-const cmsAdapter = {
+const apiRatingAdapter = {
   retrieveAllRatings: async (id) => {
     const url =
       "https://plankton-app-xhkom.ondigitalocean.app/api/reviews?filters[movie]=" +
@@ -9,4 +9,4 @@ const cmsAdapter = {
   },
 };
 
-export default cmsAdapter;
+export default apiRatingAdapter;

@@ -2,7 +2,7 @@ import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 import getAverageRating from "./getAverageRating.js";
-import cmsAdapter from "./cmsAdapter.js";
+import apiRatingAdapter from "./apiRatingAdapter.js";
 
 const app = express();
 
@@ -53,7 +53,7 @@ app.get("/movie/:id", async (req, res) => {
 
 app.get("/movies/:id/average-rating", async (req, res) => {
   const { id } = req.params;
-  const rating = await getAverageRating(cmsAdapter, id);
+  const rating = await getAverageRating(apiRatingAdapter, id);
   res.status(200).json({
     data: rating,
   });

@@ -1,5 +1,5 @@
-export default async function getAverageRating(cmsAdapter, id) {
-  const ratings = await cmsAdapter.retrieveAllRatings(id);
+export default async function getAverageRating(apiRatingAdapter, id) {
+  const ratings = await apiRatingAdapter.retrieveAllRatings(id);
   let sumRatings = 0;
   let countRatings = 0;
 
