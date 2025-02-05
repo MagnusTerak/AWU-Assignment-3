@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Yesteryear&display=swap");
 body {
   background-color: #1a323c;
@@ -858,6 +859,27 @@ body .cafe-menu__container .menu-section span {
 }
 .singleMovie__title {
   text-align: center;
+}
+
+.singleMovie__rating_star-empty {
+  position: relative;
+  font-size: 2rem;
+  display: inline-block;
+}
+.singleMovie__rating_star-empty::before {
+  content: "★★★★★";
+  color: rgba(255, 255, 255, 0.5333333333);
+}
+.singleMovie__rating_star-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+}
+.singleMovie__rating_star-filled::before {
+  content: "★★★★★";
+  color: gold;
 }
 
 body {

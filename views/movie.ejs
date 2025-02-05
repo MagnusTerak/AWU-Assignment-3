@@ -3,5 +3,9 @@
   <img class="singleMovie__img" src="<%= movie.attributes.image.url %>" />
   <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
   <%- markedIntroText %>
-  <p>Betyg: <span class="singleMovie_rating"></span> / 5</p>
+  <div class="singleMovie__rating">
+    <div class="singleMovie__rating_star-empty" title="">
+      <div class="singleMovie__rating_star-filled"></div>
+    </div>
+  </div>
 </div>
