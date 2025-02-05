@@ -1,6 +1,7 @@
 <a href="/movies" class="singleMovieReturn">Återgå till vårat utbud</a>
-<div class="singleMovie">
-    <img class="singleMovie__img" src="<%= movie.attributes.image.url %>">
-    <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
-    <%- markedIntroText %>
+<div class="singleMovie" id="<%= movie.id %>">
+  <img class="singleMovie__img" src="<%= movie.attributes.image.url %>" />
+  <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
+  <%- markedIntroText %>
+  <p>Betyg: <span class="singleMovie_rating"></span> / 5</p>
 </div>

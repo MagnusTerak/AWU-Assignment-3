@@ -42,19 +42,20 @@ describe("getAverageRating()", () => {
     ];
     const testId = mockMovie().attributes.imdbId;
     const testImdb = mockImdb();
-    const testRating = parseFloat(testImdb.imdbRating);
+    const testRatingString = parseFloat(testImdb.imdbRating).toFixed(1);
+    const testRatingInt = parseFloat(testRatingString);
 
     const apiRatingAdapter = {
       retrieveAllReviews: async () => testArray,
       retrieveImdbId: async () => testId,
-      retrieveImdbRating: async () => testRating,
+      retrieveImdbRating: async () => testRatingInt,
     };
 
     const averageRating = await getAverageRating(apiRatingAdapter, movieId);
     expect(testArray.length).toBeLessThan(5);
     expect(testId).toMatch(testImdb.imdbID);
     // We have to halve the IMDb-rating, to match our 0-5 rating scale.
-    expect(averageRating).toBe(testRating / 2);
+    expect(averageRating).toEqual(testRatingInt / 2);
   });
 });
 

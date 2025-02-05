@@ -19,7 +19,8 @@ export default async function getAverageRating(apiRatingAdapter, id) {
   } else if (countRatings !== 0) {
     const imdbId = await apiRatingAdapter.retrieveImdbId(id);
     const imdbRating = await apiRatingAdapter.retrieveImdbRating(imdbId);
-    return imdbRating / 2;
+    const roundedRating = (imdbRating / 2).toFixed(1);
+    return parseFloat(roundedRating);
   } else {
     return [];
   }
