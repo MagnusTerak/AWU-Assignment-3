@@ -1,7 +1,7 @@
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
-import screeningRoutes from "../../screeningRoutes.js"; 
+import screeningRoutes from "./screeningRoutes.js"; 
 
 const app = express();
 
