@@ -1,4 +1,6 @@
 import express from "express";
+import sanitizeHtml from "sanitize-html";
+import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 
@@ -51,16 +53,40 @@ app.get("/movie/:id", async (req, res) => {
 
 ///////////////////// POST REVIEW //////////////////////////////
 
-app.post("/api/reviews", async (req, res) => {
+app.post("/api/reviews", [
+  // Validate and sanitize input data
+  body("comment")
+    .trim()
+    .customSanitizer((value) =>
+      sanitizeHtml(value, { allowedTags: [], allowedAttributes: {} })
+    )
+    .notEmpty()
+    .withMessage("Kommentar får inte vara tom."),
+    
+  body("rating")
+    .isInt({ min: 1, max: 5 })
+    .withMessage("Betyg måste vara mellan 1 och 5."),
+    
+  body("author")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Namn/alias får inte vara tomt."),
+    
+  body("movie")
+    .trim()
+    .escape()
+    .notEmpty()
+    .withMessage("Film-ID får inte vara tomt."),
+],
+async (req, res) => {
+
+  const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
   const { comment, rating, author, movie } = req.body;
-
-  if (!comment || !rating || !author || !movie) {
-    return res.status(400).json({ error: "Alla fält måste vara ifyllda" });
-  }
-
-  if (isNaN(rating) || rating < 0 || rating > 5) {
-    return res.status(400).json({ error: "Betyg måste vara mellan 0 och 5." });
-  }
 
   try {
     const response = await fetch(
@@ -82,8 +108,6 @@ app.post("/api/reviews", async (req, res) => {
     );
 
     const responseText = await response.text();
-    console.log("🔹 API-status:", response.status);
-    console.log("🔹 API-svar (rådata):", responseText);
 
     if (!response.ok) {
       throw new Error(`API-fel: ${response.status} - ${responseText}`);
@@ -92,8 +116,8 @@ app.post("/api/reviews", async (req, res) => {
     const responseData = JSON.parse(responseText);
     res.json({ message: "Recensionen har skickats!", data: responseData });
   } catch (error) {
-    // console.log("❌ API-fel:", error.message);
-    // console.log("❌ Fullständigt fel:", error); // Logga hela felet
+    // console.log("API-fel:", error.message);
+    // console.log("Fullständigt fel:", error); // Logga hela felet
     res.status(500).json({ error: error.message });
   }
 });

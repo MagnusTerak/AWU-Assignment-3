@@ -47,32 +47,40 @@ test('POST /api/reviews - Will approve a correct review', async () => {
 
 test('POST /api/reviews - Should return 400 if rating is outside 0-5', async () => {
     const response = await request(app)
-    .post('/api/reviews')
-    .send({
-        comment: "Dålig film!",
-        rating: 10,
-        author: "Test User",
-        movie: "1"
-    })
-    .expect(400);
+        .post('/api/reviews')
+        .send({
+            comment: "Dålig film!",
+            rating: 10,  // Ogiltigt betyg
+            author: "Test User",
+            movie: "1"
+        })
+        .expect(400);
     
-    expect(response.body).toHaveProperty("error");
-    expect(response.body.error).toBe("Betyg måste vara mellan 0 och 5.");
+    expect(response.body).toHaveProperty("errors");
+    expect(response.body.errors).toEqual(
+        expect.arrayContaining([
+            expect.objectContaining({ msg: "Betyg måste vara mellan 1 och 5." })
+        ])
+    );
 });
 
 test('POST /api/reviews - Should return 400 if rating is not a number', async () => {
     const response = await request(app)
-    .post('/api/reviews')
-    .send({
-        comment: "OK film",
-        rating: "bra",
-        author: "Test User",
-        movie: "1"
-    })
-    .expect(400);
+        .post('/api/reviews')
+        .send({
+            comment: "OK film",
+            rating: "bra",  // Ogiltigt betyg
+            author: "Test User",
+            movie: "1"
+        })
+        .expect(400);
     
-    expect(response.body).toHaveProperty("error");
-    expect(response.body.error).toBe("Betyg måste vara mellan 0 och 5.");
+    expect(response.body).toHaveProperty("errors");
+    expect(response.body.errors).toEqual(
+        expect.arrayContaining([
+            expect.objectContaining({ msg: "Betyg måste vara mellan 1 och 5." })
+        ])
+    );
 });
 
 test('POST /api/reviews - Should return 400 if movie ID is missing', async () => {
@@ -82,12 +90,16 @@ test('POST /api/reviews - Should return 400 if movie ID is missing', async () =>
             comment: "Fantastisk film!",
             rating: 4,
             author: "Test User",
-            movie: ""
+            movie: ""  // Tomt fält
         })
         .expect(400);
 
-    expect(response.body).toHaveProperty("error");
-    expect(response.body.error).toMatch("Alla fält måste vara ifyllda");
+    expect(response.body).toHaveProperty("errors");
+    expect(response.body.errors).toEqual(
+        expect.arrayContaining([
+            expect.objectContaining({ msg: "Film-ID får inte vara tomt." })
+        ])
+    );
 });
 
 
@@ -101,6 +113,6 @@ test('POST /api/reviews - Should return 400 if a field is not filled', async () 
         })
         .expect(400);
 
-    expect(response.body).toHaveProperty("error");
-    expect(response.body.error).toBe("Alla fält måste vara ifyllda");
+    expect(response.body).toHaveProperty("errors");
+    expect(response.body.errors.length).toBeGreaterThan(0); // Kontrollera att det finns minst ett fel
 });

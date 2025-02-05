@@ -866,8 +866,20 @@ body .cafe-menu__container .menu-section span {
 .review-modal {
   background-color: #fff;
   padding: 0 1.8rem 1.8rem;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   width: 25rem;
+}
+
+.review-modal__open {
+  font-size: 1.125rem;
+  color: #fff;
+  background-color: #f2753b;
+  padding: 0.4rem 1rem;
+}
+
+.review-modal__open:hover {
+  color: #333333;
+  background-color: #d15d28;
 }
 
 .review-modal__close {
@@ -885,7 +897,7 @@ body .cafe-menu__container .menu-section span {
   text-align: center;
   font-size: 1.4rem;
   color: #333333;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .review-modal__content {
@@ -904,24 +916,24 @@ body .cafe-menu__container .menu-section span {
 
 .review-form__label {
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 .review-form__input {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  padding: 0.5rem;
+  margin-top: 0.313rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0.25rem;
 }
 
 .review-form__submit {
-  margin-top: 15px;
-  padding: 10px;
+  margin-top: 0.938rem;
+  padding: 0.625rem;
   background-color: #f2753b;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
