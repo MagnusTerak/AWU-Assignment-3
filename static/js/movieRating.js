@@ -3,8 +3,11 @@ async function fetchMovieRating(id) {
   if (resp.ok) {
     const payload = await resp.json();
     const averageRating = payload.data;
-    const ratingText = document.querySelector(".singleMovie_rating");
-    ratingText.innerText = averageRating;
+    document
+      .querySelector(".singleMovie__rating_star-empty")
+      .setAttribute("title", `Betyg: ${averageRating} av 5.`);
+    document.querySelector(".singleMovie__rating_star-filled").style.width =
+      averageRating * 20 + "%";
   } else {
     console.error("ERROR: Average rating could not be found.");
   }
