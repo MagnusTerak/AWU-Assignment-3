@@ -1,11 +1,9 @@
 //screenings.js 
-console.log('screenings.js loaded');
 document.addEventListener("DOMContentLoaded", () => {
     console.log('DOM fully loaded and parsed');
     const movieId = window.location.pathname.split("/").pop();
     const fetchUrl = `/api/screenings/${movieId}`;
-    console.log('Fetching URL:', fetchUrl);
-
+   
     fetch(fetchUrl)
         .then(response => response.json())
         .then(data => {
