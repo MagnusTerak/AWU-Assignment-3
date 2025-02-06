@@ -1,0 +1,24 @@
+async function run() {
+  const username = document.querySelector('input[name="username"]').value;
+  const password = document.querySelector('input[name="password"]').value;
+  const credentials = `${username}:${password}`;
+  const b64credentials = btoa(credentials);
+
+  console.log(b64credentials);
+
+  const loginRes = await fetch("/api/login", {
+    method: "POST",
+    headers: {
+      Authorization: "Basic " + b64credentials,
+    },
+  });
+  const loginPayload = await loginRes.json();
+
+  const res = await fetch("/api/protected", {
+    headers: {
+      Authorization: "Bearer " + loginPayload.token,
+    },
+  });
+  const payload = await res.json();
+  console.log(payload);
+}
