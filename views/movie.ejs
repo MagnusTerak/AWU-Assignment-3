@@ -1,9 +1,67 @@
 <script src="/static/js/screenings.js" defer></script>
 <a href="/movies" class="singleMovieReturn">Återgå till vårat utbud</a>
 <div class="singleMovie">
+
     <img class="singleMovie__img" src="<%= movie.attributes.image.url %>">
     <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
     <%- markedIntroText %>
     <h2 class="singleMovie__title">Kommande Visningar</h2>
     <ul id="screenings-list"></ul>
 </div>
+
+  <img class="singleMovie__img" src="<%= movie.attributes.image.url %>" />
+  <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
+  <%- markedIntroText %>
+</div>
+
+<button class="review-modal__open">Skriv en egen recension</button>
+
+<!-- Modal-dialog -->
+<dialog class="review-modal" id="modal">
+    <span class="review-modal__close">&times;</span>
+    <h2 class="review-modal__title" id="header">Skriv en egen recension</h2>
+  
+    <div class="review-modal__content">
+      <form class="review-form" id="review-form" data-movie-id="<%= movie.id %>">
+        
+        <!-- Betyg -->
+        <label class="review-form__label" for="rating">Vilket betyg vill du ge den här filmen:</label>
+        <div class="review-form__rating rating">
+          <input type="radio" id="star5" name="rating" value="5" class="rating__input" />
+          <label for="star5" class="rating__star">&#9733;</label>
+  
+          <input type="radio" id="star4" name="rating" value="4" class="rating__input" />
+          <label for="star4" class="rating__star">&#9733;</label>
+  
+          <input type="radio" id="star3" name="rating" value="3" class="rating__input" />
+          <label for="star3" class="rating__star">&#9733;</label>
+  
+          <input type="radio" id="star2" name="rating" value="2" class="rating__input" />
+          <label for="star2" class="rating__star">&#9733;</label>
+  
+          <input type="radio" id="star1" name="rating" value="1" class="rating__input" />
+          <label for="star1" class="rating__star">&#9733;</label>
+        </div>
+  
+        <!-- Kommentar -->
+        <label class="review-form__label" for="comment">Skriv en kommentar:</label>
+        <textarea class="review-form__input" id="comment" name="comment" required></textarea>
+  
+        <!-- Namn -->
+        <label class="review-form__label" for="author">Vad är ditt namn/alias:</label>
+        <input class="review-form__input" type="text" id="author" name="author" required />
+  
+        <!-- Skicka-knapp -->
+        <button class="review-form__submit" type="submit">Skicka recensionen</button>
+      </form>
+  
+      <p class="review-modal__message" id="response-message"></p>
+    </div>
+  </dialog>
+  
+
+    <script src="/static/js/reviews.js"></script>
+  </div>
+</dialog>
+<!-- End Modal-dialog -->
+

@@ -20,7 +20,7 @@ nav {
       font-size: 1.6rem;
       font-weight: bold;
       @include breakpoint(large) {
-        margin-right: 5rem;
+        margin-right: 2rem;
       }
 
       a {
