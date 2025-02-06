@@ -1,5 +1,14 @@
+<script src="/static/js/screenings.js" defer></script>
 <a href="/movies" class="singleMovieReturn">Återgå till vårat utbud</a>
 <div class="singleMovie">
+
+    <img class="singleMovie__img" src="<%= movie.attributes.image.url %>">
+    <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
+    <%- markedIntroText %>
+    <h2 class="singleMovie__title">Kommande Visningar</h2>
+    <ul id="screenings-list"></ul>
+</div>
+
   <img class="singleMovie__img" src="<%= movie.attributes.image.url %>" />
   <h2 class="singleMovie__title"><%= movie.attributes.title %></h2>
   <%- markedIntroText %>
@@ -55,3 +64,4 @@
   </div>
 </dialog>
 <!-- End Modal-dialog -->
+

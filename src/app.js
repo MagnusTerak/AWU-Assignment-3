@@ -3,6 +3,7 @@ import sanitizeHtml from "sanitize-html";
 import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
+import screeningRoutes from "./screeningRoutes.js"; 
 
 const app = express();
 
@@ -51,6 +52,9 @@ app.get("/movie/:id", async (req, res) => {
   });
 });
 
+
+app.use("/api", screeningRoutes);
+=======
 ///////////////////// POST REVIEW //////////////////////////////
 
 app.post("/api/reviews", [
@@ -123,6 +127,7 @@ async (req, res) => {
 });
 
 /////////////////////////// 404 /////////////////////////////////
+
 
 app.use((req, res, next) => {
   res.status(404).send("Sidan du letar efter existerar inte.");
