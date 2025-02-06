@@ -26,6 +26,33 @@ describe('getScreenings()', () => {
       const screenings = await getScreenings(fakeCmsAdapter);
       expect(screenings).toHaveLength(5);
     });
+
+
+
+    /* Max 10 filmvisningar ska visas. 
+    Om det finns fler än 10 visningar de kommande 
+    fem dagarna ska bara så många dagar visas som resulterar i max 10 visningar. */
+    it('', async () => {
+        
+    
+    
+        const fakeCmsAdapter = {
+          loadScreenings: async () => [ 
+            mockScreening({ start_time: "2025-02-07" }),
+            mockScreening({ start_time: "2025-02-08" }),
+            mockScreening({ start_time: "2025-02-09" }),
+            mockScreening({ start_time: "2025-02-10" }),
+            mockScreening({ start_time: "2025-02-11" }),
+            mockScreening({ start_time: "2025-02-12" }),
+            mockScreening({ start_time: "2025-02-13" }),
+          ],
+        }
+    
+        const screenings = await getScreenings(fakeCmsAdapter);
+        
+      });
+    
+
   });
   
   
@@ -42,6 +69,5 @@ describe('getScreenings()', () => {
   }
 
 
-// test för 10 visningar max, om det finns fler så ska det bara visas de dagar som 10 visningar 
 
-//
+
