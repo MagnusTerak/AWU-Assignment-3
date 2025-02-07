@@ -83,3 +83,83 @@ openModal.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
   modal.close();
 });
+
+
+
+
+
+
+
+
+//REVIEWLIST ON DETLAILSITE//
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reviewsList = document.getElementById("reviews-list");
+  const prevPageBtn = document.getElementById("prev-page");
+  const nextPageBtn = document.getElementById("next-page");
+  const pageInfo = document.getElementById("page-info");
+
+  const movieId = form.getAttribute("data-movie-id"); // Get movie id
+  let currentPage = 1;
+  const pageSize = 5;
+
+  // Function to get the reviews
+  async function fetchReviews(page) {
+      try {
+          const response = await fetch(`https://plankton-app-xhkom.ondigitalocean.app/api/reviews?filters[movie]=${movieId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`);
+          const data = await response.json();
+
+          if (!response.ok) throw new Error("Kunde inte hämta recensioner");
+
+          renderReviews(data);
+      } catch (error) {
+          console.error("Fel vid hämtning av recensioner:", error);
+          reviewsList.innerHTML = "<p>Kunde inte ladda recensioner.</p>";
+      }
+  }
+
+  // Function: Render in DOM
+  function renderReviews(data) {
+      reviewsList.innerHTML = ""; // Clean list
+
+      if (data.data.length === 0) {
+          reviewsList.innerHTML = "<p>Inga recensioner än. Bli den första att skriva en!</p>";
+          pageInfo.textContent = "";
+          prevPageBtn.disabled = true;
+          nextPageBtn.disabled = true;
+          return;
+      }
+
+      data.data.forEach(review => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+              <strong>${review.attributes.author}</strong> gav <strong>${review.attributes.rating}/5</strong>
+              <p>${review.attributes.comment}</p>
+          `;
+          reviewsList.appendChild(li);
+      });
+
+      // Pagination
+      pageInfo.textContent = `Sida ${data.meta.pagination.page} av ${data.meta.pagination.pageCount}`;
+      prevPageBtn.disabled = data.meta.pagination.page === 1;
+      nextPageBtn.disabled = data.meta.pagination.page === data.meta.pagination.pageCount;
+  }
+
+  // Function: Prev site
+  prevPageBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+          currentPage--;
+          fetchReviews(currentPage);
+      }
+  });
+
+  // Function: Next side
+  nextPageBtn.addEventListener("click", () => {
+      currentPage++;
+      fetchReviews(currentPage);
+  });
+
+  // Load reviews as site loads
+  fetchReviews(currentPage);
+});
+

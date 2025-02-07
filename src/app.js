@@ -1,3 +1,8 @@
+console.log("Funkar!!");
+
+
+
+
 import express from "express";
 import sanitizeHtml from "sanitize-html";
 import { body, validationResult } from "express-validator";
@@ -57,6 +62,7 @@ app.get("/movie/:id", async (req, res) => {
   res.render("movie", {
     movie: loadedMovie.data,
     markedIntroText: introTextHTML,
+    movieId: req.params.id, //The movie id here
   });
 });
 
