@@ -4,7 +4,7 @@ import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 import screeningRoutes from "./screeningRoutes.js";
-import jwt from "jsonwebtoken";
+import { generateJwt, verifyJwt } from "./jwtAuth.js";
 
 const app = express();
 
@@ -55,35 +55,8 @@ app.get("/movie/:id", async (req, res) => {
 
 app.use("/api", screeningRoutes);
 
-// Login credentials for sending a review
-const AUTHOR = "admin";
-const PASSWORD = "secret";
-const SECRET = "superduperlongpasswordlikerichardshowedinhislecture";
-
-app.post("/api/credentials", (req, res) => {
-  const authHeader = req.headers.authorization;
-  const b64credentials = authHeader.slice(6);
-  const credentials = atob(b64credentials);
-  const fields = credentials.split(":");
-  const author = fields[0];
-  const password = fields[1];
-
-  if (author == AUTHOR && password == PASSWORD) {
-    const token = jwt.sign(
-      {
-        author: author,
-        role: "superuser",
-      },
-      SECRET
-    );
-    res.status(200).json({
-      ok: true,
-      token: token,
-    });
-  } else {
-    res.status(401).end();
-  }
-  res.end();
+app.post("/api/credentials", async (req, res) => {
+  generateJwt(req, res);
 });
 
 ///////////////////// POST REVIEW //////////////////////////////
@@ -124,9 +97,7 @@ app.post(
 
     const { comment, rating, movie } = req.body;
 
-    const authHeader = req.headers.authorization;
-    const token = authHeader.slice(7);
-    const payload = jwt.verify(token, SECRET);
+    const payload = verifyJwt(req);
 
     try {
       const response = await fetch(
@@ -135,7 +106,7 @@ app.post(
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: token,
+            Authorization: payload.token,
           },
           body: JSON.stringify({
             data: {
