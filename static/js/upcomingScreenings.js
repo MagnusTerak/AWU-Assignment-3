@@ -66,7 +66,7 @@ async function fetchScreenings() {
         movieCard.appendChild(titleElement);
 
         const timeElement = document.createElement('span');
-        timeElement.textContent = screening.startTime; // Nu visas endast tiden
+        timeElement.textContent = screening.startTime; 
         timeElement.classList.add('movie-card__time');
         movieCard.appendChild(timeElement);
 
