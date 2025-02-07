@@ -4,6 +4,7 @@ import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 import screeningRoutes from "./screeningRoutes.js"; 
+import excludeReviews from "./excludeReviews.js";
 
 const app = express();
 
@@ -52,8 +53,12 @@ app.get("/movie/:id", async (req, res) => {
   });
 });
 
-
+// Route for screenings
 app.use("/api", screeningRoutes);
+
+// Route for excluding reviews
+app.use("/api", excludeReviews);
+
 
 ///////////////////// POST REVIEW //////////////////////////////
 
