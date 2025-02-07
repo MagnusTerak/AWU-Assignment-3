@@ -1,9 +1,9 @@
-@use './utils.scss' as *;
+@use "./utils.scss" as *;
 
 .upcoming-screenings {
   padding-left: 5rem;
   &__title {
-    @include font-poppins; 
+    @include font-poppins;
     font-size: 26px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -13,15 +13,15 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 20px; 
+    gap: 20px;
   }
 }
 
 .date-section {
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
 }
 
-.date-header{
+.date-header {
   @include font-poppins;
   font-size: 1.5rem;
   margin-bottom: 0;
@@ -39,29 +39,28 @@
 .hr {
   border: none;
   border-top: 1px solid $color-text;
-  width: 90%; 
-  margin-left: 0; 
+  width: 90%;
+  margin-left: 0;
   margin: 0 0 50px 0;
 }
 
 .movies-row {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 15px; 
-  justify-content: flex-start; 
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: flex-start;
 }
 
 .movie-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 180px; 
+  width: 180px;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border-radius: 5px;
- 
-  
+
   &__image {
     width: 100%;
     height: 300px;
@@ -86,6 +85,6 @@
   }
 
   &:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
   }
 }
