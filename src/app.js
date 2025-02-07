@@ -4,8 +4,7 @@ import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 import screeningRoutes from "./screeningRoutes.js";
-import fs from "fs/promises";
-import jwtAuth from "./jwtAuth.js";
+import jwt from "jsonwebtoken";
 
 const app = express();
 
@@ -56,6 +55,37 @@ app.get("/movie/:id", async (req, res) => {
 
 app.use("/api", screeningRoutes);
 
+// Login credentials for sending a review
+const AUTHOR = "admin";
+const PASSWORD = "secret";
+const SECRET = "superduperlongpasswordlikerichardshowedinhislecture";
+
+app.post("/api/credentials", (req, res) => {
+  const authHeader = req.headers.authorization;
+  const b64credentials = authHeader.slice(6);
+  const credentials = atob(b64credentials);
+  const fields = credentials.split(":");
+  const author = fields[0];
+  const password = fields[1];
+
+  if (author == AUTHOR && password == PASSWORD) {
+    const token = jwt.sign(
+      {
+        author: author,
+        role: "superuser",
+      },
+      SECRET
+    );
+    res.status(200).json({
+      ok: true,
+      token: token,
+    });
+  } else {
+    res.status(401).end();
+  }
+  res.end();
+});
+
 ///////////////////// POST REVIEW //////////////////////////////
 
 app.post(
@@ -92,7 +122,11 @@ app.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { comment, rating, author, movie } = req.body;
+    const { comment, rating, movie } = req.body;
+
+    const authHeader = req.headers.authorization;
+    const token = authHeader.slice(7);
+    const payload = jwt.verify(token, SECRET);
 
     try {
       const response = await fetch(
@@ -101,12 +135,13 @@ app.post(
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: token,
           },
           body: JSON.stringify({
             data: {
               comment: comment,
               rating: rating,
-              author: author,
+              author: payload.author,
               movie: movie,
             },
           }),
@@ -130,14 +165,6 @@ app.post(
 );
 
 /////////////////////////// 404 /////////////////////////////////
-
-app.use("/api", jwtAuth);
-
-app.get("/index", async (req, res) => {
-  const buf = await fs.readFile("./index.html");
-  const text = buf.toString();
-  res.send(text);
-});
 
 app.use((req, res, next) => {
   res.status(404).send("Sidan du letar efter existerar inte.");
