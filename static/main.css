@@ -508,8 +508,7 @@ footer {
   border-top: 2px solid rgba(241, 221, 197, 0.5);
   padding-top: 2rem;
 }
-.footer__screen,
-.footer__seats {
+.footer__screen, .footer__seats {
   margin: 0 auto;
 }
 .footer__link__list {
@@ -539,8 +538,7 @@ footer {
 .footer__link__item a:hover {
   color: #c43c3a;
 }
-.footer__seats img,
-.footer__screen img {
+.footer__seats img, .footer__screen img {
   max-width: 100%;
   height: auto;
 }
@@ -650,8 +648,7 @@ body {
 body .cafe-menu {
   margin: 1rem;
   border: 4px solid transparent;
-  border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20%
-    stretch;
+  border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20% stretch;
 }
 body .cafe-menu__container {
   width: 100%;
@@ -684,8 +681,7 @@ body .cafe-menu__container .menu-section .cafe-menu__item {
   display: flex;
   justify-content: space-between;
   border-bottom: 4px solid transparent;
-  border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20%
-    stretch;
+  border-image: url(../../static/images//about-us-img/indoors-decor.jpg) 20% stretch;
 }
 body .cafe-menu__container .menu-section span {
   margin-right: 0.5rem;
@@ -965,6 +961,27 @@ body .cafe-menu__container .menu-section span {
 .rating__star:hover,
 .rating__star:hover ~ .rating__star,
 .rating__input:checked ~ .rating__star {
+  color: gold;
+}
+
+.singleMovie__rating_star-empty {
+  position: relative;
+  font-size: 2rem;
+  display: inline-block;
+}
+.singleMovie__rating_star-empty::before {
+  content: "★★★★★";
+  color: rgba(255, 255, 255, 0.5333333333);
+}
+.singleMovie__rating_star-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+}
+.singleMovie__rating_star-filled::before {
+  content: "★★★★★";
   color: gold;
 }
 
