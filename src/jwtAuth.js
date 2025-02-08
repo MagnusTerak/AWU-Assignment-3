@@ -35,7 +35,11 @@ export function generateJwt(req, res) {
 
 export function verifyJwt(req) {
   const authHeader = req.headers.authorization;
-  const token = authHeader.slice(7);
-  const payload = jwt.verify(token, SECRET);
-  return payload;
+  if (authHeader) {
+    const token = authHeader.slice(7);
+    const payload = jwt.verify(token, SECRET);
+    return payload;
+  } else {
+    return console.error("Unauthorized!");
+  }
 }
