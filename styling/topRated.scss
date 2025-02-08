@@ -1,0 +1,28 @@
+@use './utils.scss' as *;
+
+.topRatedSection {
+    margin: 0 15% 0 15%;
+
+    &__header {
+        @include font-poppins-semibold;
+        color: $color-text;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    &__container {
+        @include font-poppins;
+        color: $color-text;
+
+        height: auto;
+        width: 25%;
+
+        display: flex;
+        gap: 2rem;
+
+        &__image {
+            height: auto;
+            width: 12vw;
+        }
+    }
+}
