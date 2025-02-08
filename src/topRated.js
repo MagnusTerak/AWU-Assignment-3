@@ -1,20 +1,28 @@
 const API = "https://plankton-app-xhkom.ondigitalocean.app/api/";
 
-export const retrieveTopRatedMovies = async function () {
-    const response = await fetch(API + "movies");
-    const jsonData = await response.json();
+export const retrieveTopRatedMovies = async function (mockData) {
+    let jsonData;
+
+    if (mockData) {
+        jsonData = mockData; 
+    } else {
+        const response = await fetch(API + "movies");
+        jsonData = await response.json();
+    }
 
     const topRatedMovies = [];
     
     for (const movie of jsonData.data) {
-        const rating = await retrieveReviews(movie.id);
+        const ratingData = mockData 
+            ? { ratingOfMovie: movie.rating, reviewsCounted: 1 }
+            : await retrieveReviews(movie.id);
 
-        if (!rating) {
+        if (!ratingData || ratingData.reviewsCounted === 0) {
             continue;
         }
 
         const movieData = {
-            rating: parseFloat(rating),
+            rating: parseFloat(ratingData.ratingOfMovie),
             id: movie.id,
             ...movie.attributes
         };
@@ -24,15 +32,23 @@ export const retrieveTopRatedMovies = async function () {
 
     topRatedMovies.sort((a, b) => b.rating - a.rating);
 
-    return topRatedMovies;
+    return topRatedMovies.slice(0, 5);
 }
 
-const retrieveReviews = async function (movieId) {
-    const url = `${API}reviews?filters[movie]=${movieId}`;
-    const response = await fetch(url);
-    const jsonData = await response.json();
+export const retrieveReviews = async function (movieId, mockData) {
+    let jsonData; 
 
-    let movieRating;
+    if (mockData) {
+        jsonData = { data: mockData };
+    } else {
+        const url = `${API}reviews?filters[movie]=${movieId}`;
+        const response = await fetch(url);
+        jsonData = await response.json();
+    }
+
+
+    let movieRating = 0;
+    let reviewsCounted = 0;
 
     for (let currentReviewIndex = 0; currentReviewIndex < jsonData.data.length; currentReviewIndex++) {
         const review = jsonData.data[currentReviewIndex];
@@ -43,15 +59,14 @@ const retrieveReviews = async function (movieId) {
         const dateDiffrenceInDays = dateDiffrenceInMs / (1000 * (60 * 60) * 24);
 
         if (dateDiffrenceInDays.toFixed(0) <= 30) {
-            movieRating = (!isNaN(movieRating) ? movieRating + review.attributes.rating : review.attributes.rating);
+            movieRating += review.attributes.rating;
+            reviewsCounted++
         }
     }
 
-    if (!isNaN(movieRating)) {
-        movieRating = movieRating / jsonData.data.length;
-    
-        return movieRating.toFixed(1);
-    } else {
-        return false
+    if (reviewsCounted === 0) {
+        return { ratingOfMovie: 0, reviewsCounted: 0 };
     }
+
+    return { ratingOfMovie: movieRating / reviewsCounted, reviewsCounted };
 }
