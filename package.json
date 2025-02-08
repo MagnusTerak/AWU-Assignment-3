@@ -17,6 +17,7 @@
   "scripts": {
     "start": "node server",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "build": "sass styling/main.scss static/main.css",
     "scss-watch": "sass --watch styling/main.scss static/main.css",
     "dev": "concurrently \"npm run scss-watch\" \"nodemon server\""
   },
