@@ -1,11 +1,12 @@
 import "./aboutUs.js";
 import "./header.js";
-import "./ongoingMovies.js";
+import "./filtering.js";
 import "./upcomingMovies.js";
 import "./components/footer.js";
 import "./carousel.js";
 import "./cafe.js";
 import "./contact.js";
+import "./topRatedMovies.js";
 
 import { fetchMovieData, moviesArray } from "./movies.js";
 
