@@ -1,7 +1,7 @@
 @use './utils.scss' as *;
 
 .topRatedSection {
-    margin: 0 15% 0 15%;
+    margin: 0 17% 5% 17%;
 
     &__header {
         @include font-poppins-semibold;
@@ -19,6 +19,11 @@
 
         display: flex;
         gap: 2rem;
+        align-content: center;
+
+        &__label {
+            text-align: center;
+        }
 
         &__image {
             height: auto;
