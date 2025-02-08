@@ -3,6 +3,7 @@ import sanitizeHtml from "sanitize-html";
 import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
+import { retrieveTopRatedMovies } from "./topRated.js";
 
 const app = express();
 
@@ -120,6 +121,14 @@ async (req, res) => {
     // console.log("Fullständigt fel:", error); // Logga hela felet
     res.status(500).json({ error: error.message });
   }
+});
+
+///////////////////////////////// Top Rated Movies /////////////////////////////////
+
+app.get("/movies/top-rated-movies", async (req, res) => {
+  const movies = await retrieveTopRatedMovies();
+
+  res.json(movies); 
 });
 
 /////////////////////////// 404 /////////////////////////////////
