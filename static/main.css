@@ -1155,3 +1155,33 @@ body a {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+
+
+
+/* Reviews detailsite*/
+
+.star-rating {
+  display: inline-block;
+  font-size: 1rem;
+  color: gold; 
+  margin-top: 20px;
+  margin-bottom: 0.1px;
+}
+
+.star-rating .star {
+  margin-right: 2px; 
+  
+}
+
+
+#reviews-list .author {
+  font-weight: bold; 
+  margin-top: 1px; 
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.comment{
+  font-style: italic;
+}

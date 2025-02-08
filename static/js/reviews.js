@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextPageBtn = document.getElementById("next-page");
   const pageInfo = document.getElementById("page-info");
 
-  const movieId = form.getAttribute("data-movie-id"); // Get movie id
+  const movieId = form.getAttribute("data-movie-id");
   let currentPage = 1;
   const pageSize = 5;
 
-  // Function to get the reviews
+  // Function: Get the reviews
   async function fetchReviews(page) {
       try {
           const response = await fetch(`https://plankton-app-xhkom.ondigitalocean.app/api/reviews?filters[movie]=${movieId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`);
@@ -120,29 +120,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function: Render in DOM
   function renderReviews(data) {
-      reviewsList.innerHTML = ""; // Clean list
-
-      if (data.data.length === 0) {
-          reviewsList.innerHTML = "<p>Inga recensioner än. Bli den första att skriva en!</p>";
-          pageInfo.textContent = "";
-          prevPageBtn.disabled = true;
-          nextPageBtn.disabled = true;
-          return;
-      }
+      reviewsList.innerHTML = ""; // Rensa lista.
 
       data.data.forEach(review => {
-          const li = document.createElement("li");
-          li.innerHTML = `
-              <strong>${review.attributes.author}</strong> gav <strong>${review.attributes.rating}/5</strong>
-              <p>${review.attributes.comment}</p>
-          `;
-          reviewsList.appendChild(li);
-      });
+        const li = document.createElement("li");
+        li.style.display = 'flex';
+        li.style.flexDirection = 'column';
 
-      // Pagination
+    
+
+       const ratingElement = createStarRating(review.attributes.rating); // Visa stjärnor istället för siffror, detta enligt figma design.
+
+
+        const commentElement = document.createElement("p");
+        commentElement.textContent = review.attributes.comment; 
+        commentElement.classList.add("comment"); //Klass för styling
+
+        const authorElement = document.createElement("span");
+        authorElement.textContent = review.attributes.author; //Tredje raden är namn, skapat ny ordning på api infon enl figma.
+        authorElement.classList.add("author"); // Klass för styling
+
+
+
+        li.appendChild(ratingElement);
+        li.appendChild(commentElement);
+        li.appendChild(authorElement);
+
+        reviewsList.appendChild(li);
+    });
+          
+
+      //Function: Pagination
       pageInfo.textContent = `Sida ${data.meta.pagination.page} av ${data.meta.pagination.pageCount}`;
-      prevPageBtn.disabled = data.meta.pagination.page === 1;
-      nextPageBtn.disabled = data.meta.pagination.page === data.meta.pagination.pageCount;
+      prevPageBtn.disabled = data.meta.pagination.page === 1;  //Går ej att klicka om på första sidan.
+      nextPageBtn.disabled = data.meta.pagination.page === data.meta.pagination.pageCount; //Går ej att klicka på om på sista sidan.
+  }
+
+    //Funtion: Static stars from rating api
+    function createStarRating(rating) {
+      const starFull = "&#9733;"; //Återanvänder Jörgens stjärnor för helhelt. Försökte återanvända logiken också men blev svårt i och med modulen är interaktiv.
+      const starEmpty = "&#9734;";
+      const totalStars = 5; 
+
+      let stars = '';
+    for (let i = 0; i < totalStars; i++) {
+        if (rating > i) {
+            stars += `<span class="star full" style="color: gold;">${starFull}</span>`; // Full star (guld)
+        } else {
+            stars += `<span class="star empty" style="color: #d3d3d3;">${starEmpty}</span>`; // Empty star (grå)
+        }
+    }
+
+      const ratingElement = document.createElement("div");
+      ratingElement.classList.add("star-rating");
+      ratingElement.innerHTML = stars;
+      return ratingElement;
   }
 
   // Function: Prev site
