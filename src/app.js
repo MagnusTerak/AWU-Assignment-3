@@ -5,6 +5,8 @@ import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 import screeningRoutes from "./screeningRoutes.js";
 import { generateJwt, verifyJwt } from "./jwtAuth.js";
+import getAverageRating from "./getAverageRating.js";
+import apiRatingAdapter from "./apiRatingAdapter.js";
 
 const app = express();
 
@@ -36,6 +38,7 @@ app.get("/movies", async (req, res) => {
 });
 
 import MarkdownIt from "markdown-it";
+
 const md = MarkdownIt();
 
 app.get("/movie/:id", async (req, res) => {
@@ -50,6 +53,14 @@ app.get("/movie/:id", async (req, res) => {
   res.render("movie", {
     movie: loadedMovie.data,
     markedIntroText: introTextHTML,
+  });
+});
+
+app.get("/movies/:id/average-rating", async (req, res) => {
+  const { id } = req.params;
+  const rating = await getAverageRating(apiRatingAdapter, id);
+  res.status(200).json({
+    data: rating,
   });
 });
 
