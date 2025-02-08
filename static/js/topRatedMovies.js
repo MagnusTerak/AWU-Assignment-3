@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         
         const movieContainer = document.querySelector(".filtering");
 
-        for (let currentMovieIndex = 0; currentMovieIndex < 5; currentMovieIndex++) {
+        for (let currentMovieIndex = 0; currentMovieIndex < movies.length; currentMovieIndex++) {
             const movie = movies[currentMovieIndex];
             
             CreateMovieCard(movie);
