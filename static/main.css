@@ -964,6 +964,27 @@ body .cafe-menu__container .menu-section span {
   color: gold;
 }
 
+.singleMovie__rating_star-empty {
+  position: relative;
+  font-size: 2rem;
+  display: inline-block;
+}
+.singleMovie__rating_star-empty::before {
+  content: "★★★★★";
+  color: rgba(255, 255, 255, 0.5333333333);
+}
+.singleMovie__rating_star-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+}
+.singleMovie__rating_star-filled::before {
+  content: "★★★★★";
+  color: gold;
+}
+
 body {
   background-color: #1a323c;
   font-size: 16px;

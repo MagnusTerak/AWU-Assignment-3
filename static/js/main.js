@@ -6,6 +6,7 @@ import "./components/footer.js";
 import "./carousel.js";
 import "./cafe.js";
 import "./contact.js";
+import "./movieRating.js";
 
 import { fetchMovieData, moviesArray } from "./movies.js";
 
