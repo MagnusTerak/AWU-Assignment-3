@@ -9,3 +9,8 @@ filters[movie]= ID för film
 GET /api/screenings/:movieId
 :movieId = ID för film
 * 
+
+* Nils
+GET /movies/:id/average-rating
+id = filmens id
+*
