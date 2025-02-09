@@ -1,4 +1,5 @@
 //screenings.js 
+// Author: Tobias-hubs
 document.addEventListener("DOMContentLoaded", () => {
     console.log('DOM fully loaded and parsed');
     const movieId = window.location.pathname.split("/").pop();
