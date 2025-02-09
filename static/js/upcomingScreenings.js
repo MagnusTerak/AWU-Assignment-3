@@ -35,7 +35,14 @@ async function fetchScreenings() {
       });
     });
 
-    Object.keys(screeningsByDate).forEach((date) => {
+    const sortedDates = Object.keys(screeningsByDate).sort((a, b) => {
+      
+      const dateA = new Date(a);
+      const dateB = new Date(b);
+      return dateA - dateB; 
+    });
+
+    sortedDates.forEach((date) => {
       const dateSection = document.createElement("div");
       dateSection.classList.add("date-section");
 
