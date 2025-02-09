@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", async function() {
         
         const movies = await response.json();
         
-        const movieContainer = document.querySelector(".filtering");
-
         for (let currentMovieIndex = 0; currentMovieIndex < movies.length; currentMovieIndex++) {
             const movie = movies[currentMovieIndex];
             
