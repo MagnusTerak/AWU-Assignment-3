@@ -7,7 +7,6 @@ import screeningRoutes from "./screeningRoutes.js";
 import excludeReviews from "./excludeReviews.js";
 import getAverageRating from "./getAverageRating.js";
 import apiRatingAdapter from "./apiRatingAdapter.js";
-import screeningRoutes from "./screeningRoutes.js";
 import { retrieveTopRatedMovies } from "./topRated.js";
 
 
