@@ -1,7 +1,9 @@
 @use './utils.scss' as *;
 
 .topRatedSection {
-    margin: 0 17% 5% 17%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &__header {
         @include font-poppins-semibold;
@@ -15,19 +17,25 @@
         color: $color-text;
 
         height: auto;
-        width: 25%;
+        width: 100%;
 
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 2rem;
-        align-content: center;
+        width: 80%;
 
         &__label {
             text-align: center;
+            word-wrap: break-word;
+            max-width: 12vw;
         }
 
         &__image {
+            width: auto;
+            max-width: 12vw;
             height: auto;
-            width: 12vw;
+            object-fit: fill;
         }
     }
 }

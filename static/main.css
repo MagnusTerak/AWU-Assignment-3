@@ -950,7 +950,9 @@ body .cafe-menu__container .menu-section span {
 }
 
 .topRatedSection {
-  margin: 0 17% 5% 17%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .topRatedSection__header {
   font-family: "Poppins", serif;
@@ -966,17 +968,23 @@ body .cafe-menu__container .menu-section span {
   font-style: normal;
   color: #f1ddc5;
   height: auto;
-  width: 25%;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
-  align-content: center;
+  width: 80%;
 }
 .topRatedSection__container__label {
   text-align: center;
+  word-wrap: break-word;
+  max-width: 12vw;
 }
 .topRatedSection__container__image {
+  width: auto;
+  max-width: 12vw;
   height: auto;
-  width: 12vw;
+  object-fit: fill;
 }
 
 body {
