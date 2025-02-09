@@ -1,20 +1,22 @@
-@use './utils.scss' as *;
-@use 'header.scss';
-@use 'nav.scss';
-@use 'carousel.scss';
-@use 'ongoingMovies.scss';
-@use 'upcomingMovies.scss';
-@use 'footer.scss';
-@use 'about.scss';
-@use 'cafe.scss';
-@use 'languageToggleBtn.scss';
-@use 'contact.scss';
-@use 'movies.scss';
+@use "./utils.scss" as *;
+@use "header.scss";
+@use "nav.scss";
+@use "carousel.scss";
+@use "ongoingMovies.scss";
+@use "upcomingMovies.scss";
+@use "footer.scss";
+@use "about.scss";
+@use "cafe.scss";
+@use "languageToggleBtn.scss";
+@use "contact.scss";
+@use "movies.scss";
+@use "review.scss";
+@use "movieRating.scss";
 @use 'screenings.scss';
 
-body{
-background-color: $color-background;
-font-size: 16px;
+body {
+  background-color: $color-background;
+  font-size: 16px;
 
   li {
     list-style: none;

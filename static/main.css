@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Yesteryear&display=swap");
 body {
   background-color: #1a323c;
@@ -858,6 +859,130 @@ body .cafe-menu__container .menu-section span {
 }
 .singleMovie__title {
   text-align: center;
+}
+
+/* //////////////////// REVIEW MODAL //////////////////*/
+/* === Modal (Block) === */
+.review-modal {
+  background-color: #fff;
+  padding: 0 1.8rem 1.8rem;
+  border-radius: 0.313rem;
+  width: 25rem;
+}
+
+.review-modal__open {
+  font-size: 1.125rem;
+  color: #fff;
+  background-color: #f2753b;
+  padding: 0.4rem 1rem;
+}
+
+.review-modal__open:hover {
+  color: #333333;
+  background-color: #d15d28;
+}
+
+.review-modal__close {
+  font-size: 3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.review-modal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.review-modal__title {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #333333;
+  margin-bottom: 0.625rem;
+}
+
+.review-modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Form (Block) === */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  color: #333333;
+  width: 90%;
+}
+
+.review-form__label {
+  font-weight: bold;
+  margin-top: 0.625rem;
+}
+
+.review-form__input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.313rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.review-form__submit {
+  margin-top: 0.938rem;
+  padding: 0.625rem;
+  background-color: #f2753b;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.review-form__submit:hover {
+  background-color: #f49366;
+}
+
+/* === Stjärnbetyg (Block) === */
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+
+.rating__input {
+  display: none;
+}
+
+.rating__star {
+  font-size: 2rem;
+  color: gray;
+  cursor: pointer;
+}
+
+.rating__star:hover,
+.rating__star:hover ~ .rating__star,
+.rating__input:checked ~ .rating__star {
+  color: gold;
+}
+
+.singleMovie__rating_star-empty {
+  position: relative;
+  font-size: 2rem;
+  display: inline-block;
+}
+.singleMovie__rating_star-empty::before {
+  content: "★★★★★";
+  color: rgba(255, 255, 255, 0.5333333333);
+}
+.singleMovie__rating_star-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  overflow: hidden;
+}
+.singleMovie__rating_star-filled::before {
+  content: "★★★★★";
+  color: gold;
 }
 
 .upcoming-screenings {
