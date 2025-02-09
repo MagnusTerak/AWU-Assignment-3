@@ -3,10 +3,13 @@ import sanitizeHtml from "sanitize-html";
 import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
+import screeningRoutes from "./screeningRoutes.js"; 
+import excludeReviews from "./excludeReviews.js";
 import getAverageRating from "./getAverageRating.js";
 import apiRatingAdapter from "./apiRatingAdapter.js";
 import screeningRoutes from "./screeningRoutes.js";
 import { retrieveTopRatedMovies } from "./topRated.js";
+
 
 const app = express();
 
@@ -56,6 +59,7 @@ app.get("/movie/:id", async (req, res) => {
   });
 });
 
+// Route for screenings
 app.get("/movies/:id/average-rating", async (req, res) => {
   const { id } = req.params;
   const rating = await getAverageRating(apiRatingAdapter, id);
@@ -65,6 +69,10 @@ app.get("/movies/:id/average-rating", async (req, res) => {
 });
 
 app.use("/api", screeningRoutes);
+
+// Route for excluding reviews
+app.use("/api", excludeReviews);
+
 
 ///////////////////// POST REVIEW //////////////////////////////
 
