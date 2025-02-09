@@ -1,0 +1,26 @@
+.singleMovie__rating {
+  &_star-empty {
+    position: relative;
+    font-size: 2rem;
+    display: inline-block;
+  }
+
+  &_star-empty::before {
+    content: "\2605 \2605 \2605 \2605 \2605";
+    color: #fff8;
+  }
+
+  &_star-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0%;
+    overflow: hidden;
+  }
+
+  &_star-filled::before {
+    content: "\2605 \2605 \2605 \2605 \2605";
+    color: gold;
+  }
+}

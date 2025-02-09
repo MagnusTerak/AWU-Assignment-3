@@ -1,4 +1,5 @@
 //screeningRoutes.test.js
+// Author: Tobias-hubs
 import request from "supertest";
 import express from "express";
 import screeningRoutes from "../src/screeningRoutes";
