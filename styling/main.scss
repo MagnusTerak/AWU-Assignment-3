@@ -2,7 +2,7 @@
 @use "header.scss";
 @use "nav.scss";
 @use "carousel.scss";
-@use "ongoingMovies.scss";
+@use "filtering.scss";
 @use "upcomingMovies.scss";
 @use "footer.scss";
 @use "about.scss";
@@ -12,6 +12,7 @@
 @use "movies.scss";
 @use "review.scss";
 @use "movieRating.scss";
+@use "topRated.scss";
 @use 'screenings.scss';
 
 body {

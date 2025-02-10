@@ -1,0 +1,41 @@
+@use './utils.scss' as *;
+
+.topRatedSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__header {
+        @include font-poppins-semibold;
+        color: $color-text;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    &__container {
+        @include font-poppins;
+        color: $color-text;
+
+        height: auto;
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        width: 80%;
+
+        &__label {
+            text-align: center;
+            word-wrap: break-word;
+            max-width: 12vw;
+        }
+
+        &__image {
+            width: auto;
+            max-width: 12vw;
+            height: auto;
+            object-fit: fill;
+        }
+    }
+}

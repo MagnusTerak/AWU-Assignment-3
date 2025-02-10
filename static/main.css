@@ -295,65 +295,29 @@ section.newest {
     font-size: 18px;
   }
 }
-.ongoingMoviesSection__header {
-  text-align: center;
-  font-family: "Poppins", serif;
-  font-weight: 600;
-  font-style: normal;
-  color: #f1ddc5;
-}
-
-.ongoingMovies {
+.filtering {
   display: flex;
   flex-wrap: wrap;
   height: auto;
   overflow: hidden;
   padding: 0 2.5rem 0 2.5rem;
 }
-.ongoingMovies__card {
-  width: calc(50% - 2rem);
-  height: 90%;
-  padding: 1rem;
-  flex: 0 0 calc(50% - 2rem);
-  margin-bottom: 2rem;
-}
-.ongoingMovies__card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
-}
-.ongoingMovies__card__label {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  font-size: 1.1rem;
-  font-family: "Poppins", serif;
-  font-weight: 400;
-  font-style: normal;
-  color: #f1ddc5;
-}
-@media (min-width: 1024px) {
-  .ongoingMovies__card {
-    width: calc(16.6666666667% - 2rem);
-    flex: 0 0 calc(16.6666666667% - 2rem);
-  }
-}
-.ongoingMovies__filterDiv {
+.filtering__filterDiv {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 @media (min-width: 1024px) {
-  .ongoingMovies__filterDiv__selectDiv {
+  .filtering__filterDiv__selectDiv {
     display: none;
   }
 }
-.ongoingMovies__filterDiv__selectDiv {
+.filtering__filterDiv__selectDiv {
   position: relative;
   width: 93.5%;
   border: 2px solid #f1ddc5;
 }
-.ongoingMovies__filterDiv__selectDiv::after {
+.filtering__filterDiv__selectDiv::after {
   content: "\f078";
   font: normal normal normal 17px/1 FontAwesome;
   color: #f1ddc5;
@@ -363,7 +327,7 @@ section.newest {
   position: absolute;
   pointer-events: none;
 }
-.ongoingMovies__filterDiv__selectDiv__select {
+.filtering__filterDiv__selectDiv__select {
   width: 93.5%;
   height: 3rem;
   background-color: transparent;
@@ -379,13 +343,13 @@ section.newest {
   -moz-appearance: none;
   appearance: none;
 }
-.ongoingMovies__filterDiv__selectDiv__select:hover {
+.filtering__filterDiv__selectDiv__select:hover {
   cursor: pointer;
 }
-.ongoingMovies__filterDiv__selectDiv__select__option {
+.filtering__filterDiv__selectDiv__select__option {
   background-color: #1a323c;
 }
-.ongoingMovies__filterDiv__searchfield {
+.filtering__filterDiv__searchfield {
   font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
@@ -397,21 +361,21 @@ section.newest {
   padding-left: 0.5rem;
   margin-left: 1rem;
 }
-.ongoingMovies__filterDiv__searchfield:active {
+.filtering__filterDiv__searchfield:active {
   outline: none;
   color: white;
 }
-.ongoingMovies__filterDiv__searchfield::placeholder {
+.filtering__filterDiv__searchfield::placeholder {
   color: #bdbecb;
 }
-.ongoingMovies__filterDiv__searchfield:active {
+.filtering__filterDiv__searchfield:active {
   transform: scale(0.95);
 }
-.ongoingMovies__filterDiv__genreChipDiv {
+.filtering__filterDiv__genreChipDiv {
   display: none;
   width: 65%;
 }
-.ongoingMovies__filterDiv__genreChipDiv__chip {
+.filtering__filterDiv__genreChipDiv__chip {
   font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
@@ -425,12 +389,12 @@ section.newest {
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
-.ongoingMovies__filterDiv__genreChipDiv__chip:hover {
+.filtering__filterDiv__genreChipDiv__chip:hover {
   background-color: #f1ddc5;
   color: #1a323c;
   cursor: pointer;
 }
-.ongoingMovies__filterDiv__genreChipDiv__searchfield {
+.filtering__filterDiv__genreChipDiv__searchfield {
   font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
@@ -444,18 +408,18 @@ section.newest {
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
-.ongoingMovies__filterDiv__genreChipDiv__searchfield:active {
+.filtering__filterDiv__genreChipDiv__searchfield:active {
   outline: none;
   color: white;
 }
-.ongoingMovies__filterDiv__genreChipDiv__searchfield::placeholder {
+.filtering__filterDiv__genreChipDiv__searchfield::placeholder {
   color: #f1ddc5;
 }
-.ongoingMovies__filterDiv__genreChipDiv__searchfield:active {
+.filtering__filterDiv__genreChipDiv__searchfield:active {
   transform: scale(0.95);
 }
 @media (min-width: 1024px) {
-  .ongoingMovies__filterDiv__genreChipDiv {
+  .filtering__filterDiv__genreChipDiv {
     display: block;
   }
 }
@@ -983,6 +947,44 @@ body .cafe-menu__container .menu-section span {
 .singleMovie__rating_star-filled::before {
   content: "★★★★★";
   color: gold;
+}
+
+.topRatedSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.topRatedSection__header {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #f1ddc5;
+  font-size: 3rem;
+  text-align: center;
+}
+.topRatedSection__container {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f1ddc5;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 80%;
+}
+.topRatedSection__container__label {
+  text-align: center;
+  word-wrap: break-word;
+  max-width: 12vw;
+}
+.topRatedSection__container__image {
+  width: auto;
+  max-width: 12vw;
+  height: auto;
+  object-fit: fill;
 }
 
 .upcoming-screenings {

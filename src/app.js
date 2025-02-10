@@ -8,6 +8,7 @@ import screeningRoutes from "./screeningRoutes.js";
 import excludeReviews from "./excludeReviews.js";
 import getAverageRating from "./getAverageRating.js";
 import apiRatingAdapter from "./apiRatingAdapter.js";
+import { retrieveTopRatedMovies } from "./topRated.js";
 import cmsAdapter from "./cmsAdapter.js";
 
 
@@ -155,6 +156,14 @@ app.post(
     }
   }
 );
+
+///////////////////////////////// Top Rated Movies /////////////////////////////////
+
+app.get("/movies/top-rated-movies", async (req, res) => {
+  const movies = await retrieveTopRatedMovies();
+
+  res.json(movies); 
+});
 
 /////////////////////////// 404 /////////////////////////////////
 

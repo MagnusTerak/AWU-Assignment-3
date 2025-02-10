@@ -1,15 +1,6 @@
 @use './utils.scss' as *;
 
-
-.ongoingMoviesSection {
-    &__header {
-        text-align: center;
-        @include font-poppins-semibold;
-        color: $color-text; 
-    }
-}
-
-.ongoingMovies {
+.filtering {
     display: flex;
     flex-wrap: wrap;
 
@@ -18,34 +9,6 @@
 
     padding: 0 2.5rem 0 2.5rem;
 
-    &__card {
-        width: calc(50% - 2rem);
-        height: 90%;
-        padding: 1rem;
-        flex: 0 0 calc(50% - 2rem);
-        margin-bottom: 2rem;
-        // margin: auto;
-        
-        &__image {
-            width: 100%;
-            height: 100%;
-            object-fit: fill;
-        }
-
-        &__label {
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            font-size: 1.1rem;
-            @include font-poppins;
-            color: $color-text;
-        }
-
-        @include breakpoint(large) {
-            width: calc((100% / 6) - 2rem);
-            flex: 0 0 calc((100% / 6) - 2rem);
-        }
-    }
 
     &__filterDiv {
         width: 100%;
