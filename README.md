@@ -14,3 +14,7 @@ GET /api/screenings/:movieId
 GET /movies/:id/average-rating
 id = filmens id
 *
+
+* Magnus
+* Get /movies/top-rated-movies
+* This returns the top 5 rated movies from the API
