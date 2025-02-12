@@ -9,18 +9,19 @@ describe("getScreenings()", () => {
 
     const fakeCmsAdapter = {
       loadScreenings: async () => [
-        mockScreening({ start_time: "2025-02-07" }),
-        mockScreening({ start_time: "2025-02-08" }),
-        mockScreening({ start_time: "2025-02-09" }),
-        mockScreening({ start_time: "2025-02-10" }),
-        mockScreening({ start_time: "2025-02-11" }),
-        mockScreening({ start_time: "2025-02-12" }),
-        mockScreening({ start_time: "2025-02-13" }),
+        mockScreening({ start_time: "2025-02-07T00:00:00.000Z" }),
+        mockScreening({ start_time: "2025-02-08T00:00:00.000Z" }),
+        mockScreening({ start_time: "2025-02-09T00:00:00.000Z" }),
+        mockScreening({ start_time: "2025-02-10T00:00:00.000Z" }),
+        mockScreening({ start_time: "2025-02-11T00:00:00.000Z" }),
+        mockScreening({ start_time: "2025-02-12T10:00:00.000Z" }),
+        mockScreening({ start_time: "2025-02-13T00:00:00.000Z" }),
       ],
     };
 
     const screenings = await getScreenings(fakeCmsAdapter);
     expect(screenings).toHaveLength(5);
+   
   });
 
   /* Max 10 filmvisningar ska visas. 
