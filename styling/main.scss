@@ -13,6 +13,7 @@
 @use "review.scss";
 @use "movieRating.scss";
 @use "topRated.scss";
+@use 'screenings.scss';
 
 body {
   background-color: $color-background;
