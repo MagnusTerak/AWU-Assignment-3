@@ -34,13 +34,14 @@ export function generateJwt(req, res) {
   res.end();
 }
 
-export function verifyJwt(req) {
+export function verifyJwt(req, res) {
   const authHeader = req.headers.authorization;
-  if (authHeader) {
-    const token = authHeader.slice(7);
+  try {
+    const token = authHeader?.slice(7);
     const payload = jwt.verify(token, SECRET);
     return payload;
-  } else {
-    return console.error("Unauthorized!");
+  } catch (error) {
+    console.error(error);
+    res.status(401);
   }
 }
