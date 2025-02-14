@@ -1,12 +1,13 @@
 import jwt from "jsonwebtoken";
+import {} from "dotenv/config"; // This imports all the properties of the .env file
 
 // 'Secret' string needed for encrypting JWT:s
-const SECRET = "superduperlongpasswordlikerichardshowedinhislecture";
+const SECRET = process.env.JWT_SECRET;
 
 export function generateJwt(req, res) {
   // Login credentials for sending a review
-  const AUTHOR = "gruppd";
-  const PASSWORD = "123";
+  const AUTHOR = process.env.AUTHOR;
+  const PASSWORD = process.env.PASSWORD;
 
   const authHeader = req.headers.authorization;
   const b64credentials = authHeader.slice(6);
