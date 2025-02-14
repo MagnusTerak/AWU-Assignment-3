@@ -42,6 +42,5 @@ export function verifyJwt(req, res) {
     return payload;
   } catch (error) {
     console.error(error);
-    res.status(401);
   }
 }
