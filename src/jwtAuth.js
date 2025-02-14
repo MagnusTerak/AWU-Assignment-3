@@ -34,7 +34,7 @@ export function generateJwt(req, res) {
   res.end();
 }
 
-export function verifyJwt(req, res) {
+export function verifyJwt(req) {
   const authHeader = req.headers.authorization;
   try {
     const token = authHeader?.slice(7);

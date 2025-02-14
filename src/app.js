@@ -122,7 +122,7 @@ app.post(
 
     const { comment, rating, movie } = req.body;
 
-    const payload = verifyJwt(req, res);
+    const payload = verifyJwt(req);
 
     try {
       const response = await fetch(
