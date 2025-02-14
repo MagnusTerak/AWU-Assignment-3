@@ -3,10 +3,14 @@ import sanitizeHtml from "sanitize-html";
 import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
+import getScreenings from "./screenings.js";
 import screeningRoutes from "./screeningRoutes.js";
-import { generateJwt, verifyJwt } from "./jwtAuth.js";
+import excludeReviews from "./excludeReviews.js";
 import getAverageRating from "./getAverageRating.js";
 import apiRatingAdapter from "./apiRatingAdapter.js";
+import { retrieveTopRatedMovies } from "./topRated.js";
+import cmsAdapter from "./cmsAdapter.js";
+import { generateJwt, verifyJwt } from "./jwtAuth.js";
 
 const app = express();
 
@@ -56,6 +60,14 @@ app.get("/movie/:id", async (req, res) => {
   });
 });
 
+app.get("/movies/screenings", async (req, res) => {
+  const screenings = await getScreenings(cmsAdapter);
+  res.status(200).json({
+    data: screenings,
+  });
+});
+
+// Route for screenings
 app.get("/movies/:id/average-rating", async (req, res) => {
   const { id } = req.params;
   const rating = await getAverageRating(apiRatingAdapter, id);
@@ -69,6 +81,8 @@ app.use("/api", screeningRoutes);
 app.post("/api/credentials", async (req, res) => {
   generateJwt(req, res);
 });
+// Route for excluding reviews
+app.use("/api", excludeReviews);
 
 ///////////////////// POST REVIEW //////////////////////////////
 
@@ -145,6 +159,14 @@ app.post(
     }
   }
 );
+
+///////////////////////////////// Top Rated Movies /////////////////////////////////
+
+app.get("/movies/top-rated-movies", async (req, res) => {
+  const movies = await retrieveTopRatedMovies();
+
+  res.json(movies);
+});
 
 /////////////////////////// 404 /////////////////////////////////
 

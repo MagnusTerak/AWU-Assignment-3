@@ -1,7 +1,7 @@
 import { initializeMovieData, moviesArray } from './main.js';
 import { observer } from './helpers/animations/fadeIn.js';
 
-const ongoingMoviesDom = document.querySelector(".ongoingMovies"); 
+const filteringDom = document.querySelector(".filtering"); 
 
 let genres = [];
 let decades = [];
@@ -11,56 +11,15 @@ const useData = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    useData().then((data) => InitializeOngoingMovies());
+    useData().then((data) => Initializefiltering());
 });
 
-function InitializeOngoingMovies() {
+function Initializefiltering() {
     createGenres();
     createDecades();
     createFilterProps();
 
-    for (let currentIndex = 0; currentIndex < moviesArray["movies"].length; currentIndex++) {
-        const element = moviesArray["movies"][currentIndex];
-
-        createMovieCard({
-            src: element.coverimage,
-            movieLabel: element.title,
-            data: element,
-        })
-    };
 }
-
-function createMovieCard(props) {
-    const cardDiv = document.createElement("div");
-    cardDiv.classList.add("ongoingMovies__card");
-    
-    if (ongoingMoviesDom) {
-        ongoingMoviesDom.appendChild(cardDiv);
-    }
-
-
-    const cardImage = document.createElement("img");
-    cardImage.src = props.src;
-    cardImage.classList.add("ongoingMovies__card__image")
-    cardDiv.appendChild(cardImage);
-
-    cardImage.addEventListener("click", () => {
-        // Open Modal for future()
-        // OpenInformationModal(props.data);
-    });
-
-    const cardLabel = document.createElement("h3");
-    cardLabel.innerHTML = props.movieLabel; 
-    cardLabel.classList.add("ongoingMovies__card__label");
-    cardDiv.appendChild(cardLabel);
-    
-    cardLabel.addEventListener("click", () => {
-        // Open Modal for future()
-        // OpenInformationModal(props.data);
-    });
-    
-    observer.observe(cardDiv);
-} 
 
 function createGenres() {
     for (let currentMovieIndex = 0; currentMovieIndex < moviesArray["movies"].length; currentMovieIndex++) {
@@ -103,24 +62,24 @@ function createDecades() {
 
 function createFilterProps() {
     const filterDiv = document.createElement("div");
-    filterDiv.classList.add("ongoingMovies__filterDiv");
+    filterDiv.classList.add("filtering__filterDiv");
 
-    if (ongoingMoviesDom) {
-        ongoingMoviesDom.appendChild(filterDiv);
+    if (filteringDom) {
+        filteringDom.appendChild(filterDiv);
     }
 
     // Mobile only 
     const selectDiv = document.createElement("div");
-    selectDiv.classList.add("ongoingMovies__filterDiv__selectDiv");
+    selectDiv.classList.add("filtering__filterDiv__selectDiv");
     filterDiv.appendChild(selectDiv);
 
     const filterDropdown = document.createElement("select");
-    filterDropdown.classList.add("ongoingMovies__filterDiv__selectDiv__select");
+    filterDropdown.classList.add("filtering__filterDiv__selectDiv__select");
     selectDiv.appendChild(filterDropdown);
 
     const startingOption = new Option("Välj genre (Ingen vald)");
     startingOption.selected = true;
-    startingOption.classList.add("ongoingMovies__filterDiv__selectDiv__select__option");
+    startingOption.classList.add("filtering__filterDiv__selectDiv__select__option");
     filterDropdown.add(startingOption)
 
     for (let genreIndex = 0; genreIndex < genres.length; genreIndex++) {
@@ -128,20 +87,20 @@ function createFilterProps() {
         
         let newOption = new Option(currentGenre, "genre_" + currentGenre);
 
-        newOption.classList.add("ongoingMovies__filterDiv__selectDiv__select__option");
+        newOption.classList.add("filtering__filterDiv__selectDiv__select__option");
         filterDropdown.add(newOption);
     }
 
     // Desktop
     let genreChipDiv = document.createElement("div");
-    genreChipDiv.classList.add("ongoingMovies__filterDiv__genreChipDiv");
+    genreChipDiv.classList.add("filtering__filterDiv__genreChipDiv");
     filterDiv.appendChild(genreChipDiv);
 
     for (let currentIndex = 0; currentIndex < decades.length; currentIndex++) {
         const currentDecade = decades[currentIndex];
         
         let chip = document.createElement("button");
-        chip.classList.add("ongoingMovies__filterDiv__genreChipDiv__chip");
+        chip.classList.add("filtering__filterDiv__genreChipDiv__chip");
         chip.textContent = currentDecade + "-tal";
         genreChipDiv.appendChild(chip);
     }
@@ -150,18 +109,18 @@ function createFilterProps() {
         const currentGenre = genres[currentIndex];
         
         let chip = document.createElement("button");
-        chip.classList.add("ongoingMovies__filterDiv__genreChipDiv__chip");
+        chip.classList.add("filtering__filterDiv__genreChipDiv__chip");
         chip.textContent = currentGenre;
         genreChipDiv.appendChild(chip);
     }
 
     let chip = document.createElement("button");
-    chip.classList.add("ongoingMovies__filterDiv__genreChipDiv__chip");
+    chip.classList.add("filtering__filterDiv__genreChipDiv__chip");
     chip.textContent = "Svartvit";
     genreChipDiv.appendChild(chip);
 
     let filterSearchField = document.createElement("input");
-    filterSearchField.classList.add("ongoingMovies__filterDiv__genreChipDiv__searchfield");
+    filterSearchField.classList.add("filtering__filterDiv__genreChipDiv__searchfield");
     filterSearchField.placeholder = "Sök";
     genreChipDiv.appendChild(filterSearchField);
 }
