@@ -3,14 +3,14 @@ import sanitizeHtml from "sanitize-html";
 import { body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
-import  getScreenings  from "./screenings.js";
-import screeningRoutes from "./screeningRoutes.js"; 
+import getScreenings from "./screenings.js";
+import screeningRoutes from "./screeningRoutes.js";
 import excludeReviews from "./excludeReviews.js";
 import getAverageRating from "./getAverageRating.js";
 import apiRatingAdapter from "./apiRatingAdapter.js";
 import { retrieveTopRatedMovies } from "./topRated.js";
 import cmsAdapter from "./cmsAdapter.js";
-
+import { generateJwt, verifyJwt } from "./jwtAuth.js";
 
 const app = express();
 
@@ -43,7 +43,6 @@ app.get("/movies", async (req, res) => {
 
 import MarkdownIt from "markdown-it";
 
-
 const md = MarkdownIt();
 
 app.get("/movie/:id", async (req, res) => {
@@ -66,7 +65,6 @@ app.get("/movies/screenings", async (req, res) => {
   res.status(200).json({
     data: screenings,
   });
-
 });
 
 // Route for screenings
@@ -80,9 +78,11 @@ app.get("/movies/:id/average-rating", async (req, res) => {
 
 app.use("/api", screeningRoutes);
 
+app.post("/api/credentials", async (req, res) => {
+  generateJwt(req, res);
+});
 // Route for excluding reviews
 app.use("/api", excludeReviews);
-
 
 ///////////////////// POST REVIEW //////////////////////////////
 
@@ -120,7 +120,9 @@ app.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { comment, rating, author, movie } = req.body;
+    const { comment, rating, movie } = req.body;
+
+    const payload = verifyJwt(req, res);
 
     try {
       const response = await fetch(
@@ -129,12 +131,13 @@ app.post(
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: payload.token,
           },
           body: JSON.stringify({
             data: {
               comment: comment,
               rating: rating,
-              author: author,
+              author: payload.author,
               movie: movie,
             },
           }),
@@ -162,7 +165,7 @@ app.post(
 app.get("/movies/top-rated-movies", async (req, res) => {
   const movies = await retrieveTopRatedMovies();
 
-  res.json(movies); 
+  res.json(movies);
 });
 
 /////////////////////////// 404 /////////////////////////////////
@@ -170,7 +173,5 @@ app.get("/movies/top-rated-movies", async (req, res) => {
 app.use((req, res, next) => {
   res.status(404).send("Sidan du letar efter existerar inte.");
 });
-
-
 
 export { app };
