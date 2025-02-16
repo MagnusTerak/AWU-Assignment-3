@@ -122,4 +122,3 @@ function renderReviews(data) {
     fetchReviews(currentPage);
   });
   
-  
