@@ -5,7 +5,7 @@ console.log("Funkar!!");
 
 import express from "express";
 import sanitizeHtml from "sanitize-html";
-import { body, validationResult } from "express-validator";
+import { query, body, validationResult } from "express-validator";
 import expressLayouts from "express-ejs-layouts";
 import { getMoviesFromAPI, getMovieFromId } from "./movieRetriever.js";
 import getScreenings from "./screenings.js";
@@ -13,6 +13,7 @@ import screeningRoutes from "./screeningRoutes.js";
 import excludeReviews from "./excludeReviews.js";
 import getAverageRating from "./getAverageRating.js";
 import apiRatingAdapter from "./apiRatingAdapter.js";
+import getReviewsFromAPI from "./getReviews.js"
 import { retrieveTopRatedMovies } from "./topRated.js";
 import cmsAdapter from "./cmsAdapter.js";
 import { generateJwt, verifyJwt } from "./jwtAuth.js";
@@ -165,6 +166,40 @@ app.post(
     }
   }
 );
+
+////////////////////// Get reviews ////////////////////////
+
+app.get('/api/reviews', [
+  query('filters[movie]')
+    .isInt()
+    .withMessage('Movie ID must be a valid integer'),
+  query('pagination[page]')
+    .optional()
+    .isInt({ min: 1 })
+    .withMessage('Page must be a positive integer'),
+  query('pagination[pageSize]')
+    .optional()
+    .isInt({ min: 1 })
+    .withMessage('Page size must be a positive integer')
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {
+    const movieId = req.query['filters[movie]'];
+    const page = req.query['pagination[page]'] || 1;
+    const pageSize = req.query['pagination[pageSize]'] || 5;
+
+    const data = await getReviewsFromAPI(movieId, page, pageSize);
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    res.status(500).json({ error: 'Failed to fetch reviews' });
+  }
+});
+
 
 ///////////////////////////////// Top Rated Movies /////////////////////////////////
 
