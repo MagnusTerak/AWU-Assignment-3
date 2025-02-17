@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import { expect, test } from "@jest/globals";
 import request from "supertest";
 import { app } from "../src/app.js";

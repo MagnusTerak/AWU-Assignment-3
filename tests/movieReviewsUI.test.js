@@ -1,3 +1,8 @@
+/**
+ * @jest-environment jsdom
+ */
+
+
 describe('Movie Reviews Pagination', () => {
     let container;
     let reviewsList;
