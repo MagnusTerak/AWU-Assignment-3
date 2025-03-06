@@ -1,8 +1,3 @@
-console.log("Funkar!!");
-
-
-
-
 import express from "express";
 import sanitizeHtml from "sanitize-html";
 import { query, body, validationResult } from "express-validator";
@@ -17,6 +12,7 @@ import getReviewsFromAPI from "./getReviews.js"
 import { retrieveTopRatedMovies } from "./topRated.js";
 import cmsAdapter from "./cmsAdapter.js";
 import { generateJwt, verifyJwt } from "./jwtAuth.js";
+import fs from "fs/promises";
 
 const app = express();
 
@@ -29,9 +25,9 @@ app.get("", (req, res) => {
   res.render("index");
 });
 
-app.get("/about", (req, res) => {
-  res.render("about");
-});
+// app.get("/about", (req, res) => {
+//   res.render("about");
+// });
 
 app.get("/cafe", (req, res) => {
   res.render("cafe");
@@ -46,6 +42,45 @@ app.get("/movies", async (req, res) => {
 
   res.render("movies", { movies: loadedMovies.data });
 });
+
+app.get("/login", async (req, res) => {
+  const buff = await fs.readFile("./login/loginSelection.html");
+  
+  const html = buff.toString();
+
+  res.send(html);
+});
+
+app.get("/login/:framework", async (req, res) => {
+  const { framework } = req.params;
+
+  const buff = await fs.readFile("./login/" + framework + ".html");
+  
+  const html = buff.toString();
+
+  res.send(html);
+});
+
+app.get("/signup/:framework", async (req, res) => {
+  const { framework } = req.params;
+
+  const buff = await fs.readFile("./signup/" + framework + ".html");
+  
+  const html = buff.toString();
+
+  res.send(html);
+});
+
+app.get("/profile/:framework", async (req, res) => {
+  const { framework } = req.params;
+
+  const buff = await fs.readFile("./profile/" + framework + ".html");
+  
+  const html = buff.toString();
+
+  res.send(html);
+});
+
 
 import MarkdownIt from "markdown-it";
 

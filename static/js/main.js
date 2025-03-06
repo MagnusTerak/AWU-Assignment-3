@@ -10,6 +10,7 @@ import "./movieRating.js";
 import "./topRatedMovies.js";
 import "./upcomingScreenings.js";
 import { fetchMovieData, moviesArray } from "./movies.js";
+import "./login.js";
 
 export const initializeMovieData = async () => {
   await fetchMovieData(); // Ensure the data is fetched before proceeding
