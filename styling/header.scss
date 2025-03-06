@@ -115,3 +115,26 @@ header {
     }
   }
 }
+
+.loginBtn {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+
+  text-align: center;
+
+  @include font-poppins;
+  color: $color-text;
+  background-color: $color-background;
+  border: 2px solid $color-text;
+  padding-top: 12.5px;
+  width: 8rem;
+  height: 2.5rem;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: $color-text;
+    color: $color-background;
+    cursor: pointer;
+  }
+}

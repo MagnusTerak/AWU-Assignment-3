@@ -20,10 +20,44 @@
       </div>
     </header>
 
-    <%- body %>
+    <form id="registerForm">
+        <h1>Bli medlem</h1>
+
+        <h2>Fyll i användarnamn, e-post & lösenord klicka sedan på registrera</h2>
+
+        <label>
+          Användarnamn
+          <input type="text" id="inputUsername" required></input>
+        </label>
+
+        <label>
+          E-post
+          <input type="email" id="inputEmail" required></input>
+        </label>
+
+        <label>
+          Förnamn
+          <input type="text" id="inputFirstname" required></input>
+        </label>
+        
+        <label>
+          Efternamn
+          <input type="text" id="inputLastname" required></input>
+        </label>
+
+        <label>
+          Lösenord
+          <input type="password" id="inputPassword" required></input>
+        </label>
+
+        <div id="passwordStrength"></div>
+
+        <button type="submit">
+          Registrera
+        </button>
+    </form>
 
     <!-- Footer -->
     <footer class="footer"></footer>
-
   </body>
 </html>
