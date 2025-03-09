@@ -2,59 +2,97 @@
 <html lang="sv">
   <head>
     <title>Retro - biografen som visar filmer från förr -</title>
-    <meta name="description" content="Retro biografen ligger i västerås och visar filmer från förr"/>
-    <meta name="keywords" content="Biograf,retro, 50-tal, 70-tal, 80-tal, 90-tal, 00-tal, Västerås"/>
+    <meta
+      name="description"
+      content="Retro biografen ligger i västerås och visar filmer från förr"
+    />
+    <meta
+      name="keywords"
+      content="Biograf,retro, 50-tal, 70-tal, 80-tal, 90-tal, 00-tal, Västerås"
+    />
     <meta name="robots" content="index, follow" />
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/static/js/main.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header class="header">
       <div class="header__container">
-        <a href="/login" class="loginBtn">
-          Login
-        </a>
+        <a href="/login" class="loginBtn"> Login </a>
       </div>
     </header>
 
-    <form id="registerForm">
-        <h1>Bli medlem</h1>
+    <form class="d-flex flex-column align-items-center" id="registerForm">
+      <h1>Bli medlem</h1>
 
-        <h2>Fyll i användarnamn, e-post & lösenord klicka sedan på registrera</h2>
+      <h2 class="mb-3">
+        Fyll i användarnamn, e-post & lösenord klicka sedan på registrera
+      </h2>
 
-        <label>
+      <div class="mb-3">
+        <label class="form-label" for="inputUsername">
           Användarnamn
-          <input type="text" id="inputUsername" required></input>
+          <input class="form-control" type="text" id="inputUsername" required />
         </label>
+      </div>
 
-        <label>
+      <div class="mb-3">
+        <label class="form-label" for="inputEmail">
           E-post
-          <input type="email" id="inputEmail" required></input>
+          <input class="form-control" type="email" id="inputEmail" required />
         </label>
+      </div>
 
-        <label>
+      <div class="mb-3">
+        <label class="form-label" for="inputFirstname">
           Förnamn
-          <input type="text" id="inputFirstname" required></input>
+          <input
+            class="form-control"
+            type="text"
+            id="inputFirstname"
+            required
+          />
         </label>
-        
-        <label>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="inputLastname">
           Efternamn
-          <input type="text" id="inputLastname" required></input>
+          <input class="form-control" type="text" id="inputLastname" required />
         </label>
+      </div>
 
-        <label>
+      <div class="mb-3">
+        <label class="form-label" for="inputPassword">
           Lösenord
-          <input type="password" id="inputPassword" required></input>
+          <input
+            class="form-control"
+            type="password"
+            id="inputPassword"
+            required
+          />
         </label>
+      </div>
 
-        <div id="passwordStrength"></div>
+      <div id="passwordStrength"></div>
 
-        <button type="submit">
-          Registrera
-        </button>
+      <button class="btn btn-primary" type="submit">Registrera</button>
     </form>
 
     <!-- Footer -->
