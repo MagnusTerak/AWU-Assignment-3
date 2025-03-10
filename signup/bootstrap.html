@@ -24,12 +24,13 @@
     />
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/static/js/main.js" defer></script>
     <script
+      defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="/static/js/main.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -38,61 +39,74 @@
       </div>
     </header>
 
-    <form class="d-flex flex-column align-items-center" id="registerForm">
-      <h1>Bli medlem</h1>
+    <form class="text-bg-info-subtle bg-gradient p-4" id="registerForm">
+      <h1 class="text-center">Bli medlem</h1>
 
-      <h2 class="mb-3">
+      <h2 class="mb-4 text-center">
         Fyll i användarnamn, e-post & lösenord klicka sedan på registrera
       </h2>
 
-      <div class="mb-3">
-        <label class="form-label" for="inputUsername">
-          Användarnamn
-          <input class="form-control" type="text" id="inputUsername" required />
-        </label>
+      <div class="bg-secondary w-25 p-3 ms-auto me-auto rounded-4">
+        <!-- This is a wrapper-div for the inputs of the form -->
+        <div class="mb-3">
+          <label class="form-label" for="inputUsername">
+            Användarnamn
+            <input
+              class="form-control"
+              type="text"
+              id="inputUsername"
+              required
+            />
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="inputEmail">
+            E-post
+            <input class="form-control" type="email" id="inputEmail" required />
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="inputFirstname">
+            Förnamn
+            <input
+              class="form-control"
+              type="text"
+              id="inputFirstname"
+              required
+            />
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="inputLastname">
+            Efternamn
+            <input
+              class="form-control"
+              type="text"
+              id="inputLastname"
+              required
+            />
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="inputPassword">
+            Lösenord
+            <input
+              class="form-control"
+              type="password"
+              id="inputPassword"
+              required
+            />
+          </label>
+        </div>
+
+        <div class="text-bg-light rounded-1" id="passwordStrength"></div>
+
+        <button class="btn btn-primary mt-1" type="submit">Registrera</button>
       </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="inputEmail">
-          E-post
-          <input class="form-control" type="email" id="inputEmail" required />
-        </label>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="inputFirstname">
-          Förnamn
-          <input
-            class="form-control"
-            type="text"
-            id="inputFirstname"
-            required
-          />
-        </label>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="inputLastname">
-          Efternamn
-          <input class="form-control" type="text" id="inputLastname" required />
-        </label>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label" for="inputPassword">
-          Lösenord
-          <input
-            class="form-control"
-            type="password"
-            id="inputPassword"
-            required
-          />
-        </label>
-      </div>
-
-      <div id="passwordStrength"></div>
-
-      <button class="btn btn-primary" type="submit">Registrera</button>
     </form>
 
     <!-- Footer -->
