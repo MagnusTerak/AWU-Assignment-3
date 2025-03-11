@@ -10,6 +10,23 @@
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/static/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              backgroundColor: '#f1ddc5',
+              textColor: '#1a323c'
+            },
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="header">
@@ -20,32 +37,61 @@
       </div>
     </header>
 
-    <form id="registerForm">
-        <h1>Bli medlem</h1>
+    <div class="w-full max-w-xs flex items-center justify-center min-h-auto mx-auto">
+      <form class="bg-backgroundColor shadow-md rounded px-8 pt-6 pb-8 mb-4" id="registerForm">
+        <h1 class="font-poppins text-textColor block text-xl font-bold mb-4">Bli medlem</h1>
 
-        <h2>Fyll i användarnamn, e-post & lösenord klicka sedan på registrera</h2>
+        <h2 class="font-poppins text-textColor block text-sm font-bold mb-4">Fyll i användarnamn, e-post & lösenord klicka sedan på registrera</h2>
 
-        <label>
-          Användarnamn
-          <input type="text" id="inputUsername" required></input>
-        </label>
-        
-        <label>
-          E-post
-          <input type="email" id="inputEmail" required></input>
-        </label>
+        <div class="mb-4">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="username">
+            Användarnamn
+          </label>
+          
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" type="text" id="inputUsername" name="username" required></input>
+        </div>
 
-        <label>
-          Lösenord
-          <input type="password" id="inputPassword" required></input>
-        </label>
+        <div class="mb-4">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="email">
+            E-post
+          </label>
+          
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" type="email" id="inputEmail" name="email" required></input>
+        </div>
 
-        <div id="passwordStrength"></div>
+        <div class="mb-4">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="firstname">
+            Förnamn
+          </label>
+          
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" type="text" id="inputFirstname" name="firstname" required></input>
+        </div>
 
-        <button type="submit">
-          Registrera
-        </button>
-    </form>
+        <div class="mb-4">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="lastname">
+            Efternamn
+          </label>
+          
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" type="text" id="inputLastname" name="lastname" required></input>
+        </div>
+
+        <div class="mb-4">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="password">
+            Lösenord
+          </label>
+          
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" type="password" id="inputPassword" name="password" required></input>
+        </div>
+
+        <div class="text-textColor font-poppins mb-4" id="passwordStrength"></div>
+
+        <div class="flex items-center justify-between">
+          <button class="font-poppins bg-textColor text-backgroundColor font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-opacity duration-300 hover:opacity-85" type="submit">
+            Registrera
+          </button>
+        </div>
+      </form>
+    </div>
 
     <!-- Footer -->
     <footer class="footer"></footer>
