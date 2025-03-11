@@ -10,6 +10,23 @@
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/static/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              backgroundColor: '#f1ddc5',
+              textColor: '#1a323c'
+            },
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="header">
@@ -20,7 +37,37 @@
       </div>
     </header>
 
-    <form id="loginForm">
+    <div class="w-full max-w-xs flex items-center justify-center min-h-auto mx-auto">
+      <form id="loginForm" class="bg-backgroundColor shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="username">
+            Användarnamn
+          </label>
+          
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" type="text" id="usernameLogin" name="username" required></input>
+        </div>
+        <div class="mb-6">
+          <label class="font-poppins text-textColor block text-sm font-bold mb-2" for="password">
+            Lösenord
+          </label>
+          <input class="font-poppins text-textColor shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="password" id="passwordLogin" name="password" required></input>
+
+          <a class="font-poppins text-textColor inline-block align-baseline font-bold text-sm hover:text-blue-800" href="#">
+            Har du glömt ditt lösenord?
+          </a>
+        </div>
+        <div class="flex items-center justify-between">
+          <button class="font-poppins bg-textColor text-backgroundColor font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-opacity duration-300 hover:opacity-85" id="login" type="submit">
+            Logga in
+          </button>
+          <a class="font-poppins text-textColor inline-block align-baseline font-bold text-sm hover:text-blue-800" href="/signup/tailwind">
+            Bli medlem
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- <form class="" id="loginForm">
         <h1>Logga in eller bli medlem</h1>
         
         <label>
@@ -41,7 +88,7 @@
         <a href="/signup/tailwind">Bli medlem</a>
 
         <a>Avbryt</a>
-    </form>
+    </form> -->
 
     <!-- Footer -->
     <footer class="footer"></footer>
