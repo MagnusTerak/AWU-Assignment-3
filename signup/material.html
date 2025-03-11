@@ -7,9 +7,58 @@
     <meta name="robots" content="index, follow" />
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-deep_orange.min.css">
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/static/js/main.js" defer></script>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+      .mdl-textfield__input{
+        border-color: #1a323c!important;
+      }
+
+      .mdl-textfield__label{
+          color: #1a323c!important;
+      }
+
+      .mdl-textfield__label::after{
+          color: #1a323c!important;
+      }
+
+      .mdl-card{
+        font-family: poppins;
+        color: #1a323c;
+        width: 20rem; 
+        padding: 1.25rem; 
+        background-color:#F1DDC5; 
+        text-align: center;
+      }
+      .mdl-textfield__label {
+        color: #1a323c;
+      }
+
+      .mdl-textfield__error{
+        font-size: .7rem;
+      }
+
+      .mdl-card__actions a, #passwordStrength {
+        font-size: .8rem;
+        color: #1a323c;
+      }
+
+      .mdl-button{
+          margin-top: 1rem;
+      }
+
+      .mdl-card__title-text {
+        align-self: center!important;
+      }
+
+      h2 {
+        line-height: 1rem!important;
+      }
+    </style>
   </head>
   <body>
     <header class="header">
@@ -19,33 +68,51 @@
         </a>
       </div>
     </header>
+    
+    
+    <div class="mdl-grid mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
+      <form id="registerForm" class="mdl-card">
+        <h1 class="mdl-card__title-text">Bli medlem</h1>
 
-    <form id="registerForm">
-        <h1>Bli medlem</h1>
+        <h2 class="mdl-card__subtitle-text">Fyll i användarnamn, e-post & lösenord klicka sedan på registrera</h2>
 
-        <h2>Fyll i användarnamn, e-post & lösenord klicka sedan på registrera</h2>
-
-        <label>
-          Användarnamn
-          <input type="text" id="inputUsername" required></input>
-        </label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="inputUsername" name="username" required></input>
+          <label for="inputUsername" class="mdl-textfield__label">Användarnamn</label>
+          <span class="mdl-textfield__error">*Required</span>
+        </div>
         
-        <label>
-          E-post
-          <input type="email" id="inputEmail" required></input>
-        </label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="email" id="inputEmail" name="email" required></input>
+          <label for="inputEmail" class="mdl-textfield__label">E-post</label>
+          <span class="mdl-textfield__error">*Required</span>
+         </div>
+         
+         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="inputFirstname" name="firstname" required></input>
+          <label for="inputFirstname" class="mdl-textfield__label">Förnamn</label>
+          <span class="mdl-textfield__error">*Required</span>
+        </div>
 
-        <label>
-          Lösenord
-          <input type="password" id="inputPassword" required></input>
-        </label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="inputLastname" name="lastname" required></input>
+          <label for="inputLastname" class="mdl-textfield__label">Efternamn</label>
+          <span class="mdl-textfield__error">*Required</span>
+        </div>
+        
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" id="inputPassword" name="password" required></input>
+          <label for="inputPassword" class="mdl-textfield__label">Lösenord</label>
+          <span class="mdl-textfield__error">*Required</span>
+        </div>
+        
+        <div class="mdl-card__supporting-text" id="passwordStrength"></div>
 
-        <div id="passwordStrength"></div>
-
-        <button type="submit">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" type="submit">
           Registrera
         </button>
-    </form>
+      </form>
+    </div>
 
     <!-- Footer -->
     <footer class="footer"></footer>
