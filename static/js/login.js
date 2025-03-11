@@ -1,3 +1,5 @@
+let showPassword = false; 
+
 const registerMember = function(e, framework) { 
     e.preventDefault();
 }
@@ -72,13 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerPassword = document.getElementById("inputPassword");
     const profileDiv = document.getElementById("profileDiv");
     const selectionHeader = document.querySelector(".profileSelectionHeader");
+    const hidePasswordBtn = document.getElementById("profileHidePassword");
 
     if (loginForm) {
         loginForm.addEventListener("submit", (e) => AttemptLogin(e));
     }
 
     if (registerForm) {
-        console.log("found registerform")
         registerForm.addEventListener("submit", (e) => CreateAccount(e))
     }
     
@@ -127,10 +129,39 @@ document.addEventListener("DOMContentLoaded", () => {
         pEmail.textContent = localStorage.getItem("email");
         pFirstname.textContent = localStorage.getItem("firstname");
         pLastname.textContent = localStorage.getItem("lastname");
-        pPassword.textContent = localStorage.getItem("password");
+
+        hidePassword();
     }
 
     if (selectionHeader) {
         selectionHeader.textContent = `Välkommen ${localStorage.getItem("firstname")}!`
     }
+
+    if (hidePasswordBtn) {
+        hidePasswordBtn.addEventListener("click", function() {
+            showPassword = !showPassword;
+
+            hidePassword();
+        })
+    }
 });
+
+const hidePassword = function(passwordLength) {
+    let getHiddenPassword = function(passwordLength) {
+        let passwordString = "";
+    
+        for (let index = 0; index < passwordLength; index++) {
+            passwordString = passwordString + "*";
+        }
+    
+        return passwordString  
+    }
+
+    const pPassword = document.getElementById("passwordProfile");
+
+    if (showPassword) {
+        pPassword.textContent = localStorage.getItem("password");
+    } else {
+        pPassword.textContent = getHiddenPassword(localStorage.getItem("password").length);
+    }
+}
