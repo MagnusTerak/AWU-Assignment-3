@@ -10,6 +10,23 @@
     <link rel="stylesheet" type="text/css" href="/static/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="/static/js/main.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              backgroundColor: '#f1ddc5',
+              textColor: '#1a323c'
+            },
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="header">
@@ -20,41 +37,36 @@
       </div>
     </header>
 
-    <div id="profileDiv">
-      <label>
-        Användarnamn
+    <h1 class="font-poppins text-backgroundColor mb-4 text-3xl flex items-center justify-center">Din profil</h1>
+    <div class="w-full max-w-xs flex items-center justify-center min-h-auto mx-auto" id="profileDiv">
+      <div class="bg-backgroundColor shadow-md rounded px-12 pt-6 pb-8 mb-4 w-96">
+
+        <label class="font-poppins text-textColor mb-2 font-bold">Användarnamn:</label>
         
-        <p id="usernameProfile">Change me</p>
-      </label>
-
-      <label>
-        E-post
-        
-        <p id="emailProfile">Change me</p>
-      </label>
-
-      <label>
-        Förnamn
-
-        <p id="firstnameProfile">Change me</p>
-      </label>
-
-      <label>
-        Efternamn
-        
-        <p id="lastnameProfile">Change me</p>
-      </label>
+        <p class="font-poppins text-textColor mb-4" id="usernameProfile">Change me</p>
   
-      <label>
-        Lösenord 
+        <label class="font-poppins text-textColor mb-2 font-bold">E-post:</label>
+        
+        <p class="font-poppins text-textColor mb-4" id="emailProfile">Change me</p>
+  
+        <label class="font-poppins text-textColor mb-2 font-bold">Förnamn:</label>
+        
+        <p class="font-poppins text-textColor mb-4" id="firstnameProfile">Change me</p>
+  
+        <label class="font-poppins text-textColor mb-2 font-bold">Efternamn:</label>
+        
+        <p class="font-poppins text-textColor mb-4" id="lastnameProfile">Change me</p>
+    
+        <label class="font-poppins text-textColor mb-2 font-bold">Lösenord:</label>
 
-        <p id="passwordProfile">Change me</p>
+        <p class="font-poppins text-textColor mb-4" id="passwordProfile">Change me</p>
+        
+        <button class="font-poppins bg-textColor text-backgroundColor font-bold py-2 px-4 rounded transition-opacity duration-300 hover:opacity-85 mb-4" id="profileHidePassword">Visa lösenord</button>
 
-        <button>Visa lösenord</button>
-      </label>
+        <button class="font-poppins bg-textColor text-backgroundColor font-bold py-2 px-4 rounded transition-opacity duration-300 hover:opacity-85" id="logOutButton">Logga ut!</button>
+      </div>
     </div>
 
-    <button id="logOutButton">Logga ut!</button>
     
 
     <!-- Footer -->
